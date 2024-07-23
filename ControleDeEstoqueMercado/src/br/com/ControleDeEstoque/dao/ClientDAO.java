@@ -57,10 +57,12 @@ public class ClientDAO {
         }
     }
     
+    //Método Alterar Cliente
     public void alterarCliente(){
         
     }
     
+    //Método Excluir Cliente
     public void excluirCliente(){
         
     }
