@@ -6,8 +6,12 @@ package br.com.ControleDeEstoque.dao;
 
 import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
 import br.com.ControleDeEstoque.model.Clientes;
+import com.mysql.cj.protocol.Resultset;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -67,5 +71,42 @@ public class ClientDAO {
         
     }
     
-    
+   // Método Listar Cliente
+    public List<Clientes> listarClientes(){
+        try {
+            
+            //Criando a Lista
+            List<Clientes> lista = new ArrayList<>();
+            
+            //Criando comando sql
+            String sql = "select * from tb_clientes";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()){
+            Clientes obj = new Clientes();
+            
+            obj.setId(rs.getInt("id"));
+            obj.setNome(rs.getString("nome"));
+            obj.setRg(rs.getString("rg"));
+            obj.setCpf(rs.getString("cpf"));
+            obj.setRg(rs.getString("email"));
+            obj.setTelefone(rs.getString("telefone"));
+            obj.setCelular(rs.getString("celular"));
+            obj.setCep(rs.getString("cep"));
+            obj.setEndereco(rs.getString("endereco"));
+            obj.setNumero(rs.getInt("numero"));
+            obj.setComplemento(rs.getString("complemento"));
+            obj.setBairro(rs.getString("bairro"));
+            obj.setCidade(rs.getString("cidade"));
+            obj.setUf(rs.getString("estado"));
+            
+            lista.add(obj);
+        }
+            
+        } catch (Exception e) {
+        }
+
+    }
 }
