@@ -10,6 +10,7 @@ import com.mysql.cj.protocol.Resultset;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -19,21 +20,21 @@ import javax.swing.JOptionPane;
  * @author livia
  */
 public class ClientDAO {
-    
+
     private Connection con;
-    
-    public ClientDAO(){
+
+    public ClientDAO() {
         this.con = new ConnectionFactory().getConnection();
     }
-    
+
     //Método Cadastrar Cliente
-    public void cadastrarCliente(Clientes obj){
-        
+    public void cadastrarCliente(Clientes obj) {
+
         try {
             //Cria o comando SQL
             String sql = "insert into tb_clientes(nome,rg,cpf,email,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado) \n"
                     + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            
+
             //Conectar com o banco de dados e organizar o comando sql 
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, obj.getNome());
@@ -49,63 +50,67 @@ public class ClientDAO {
             stmt.setString(11, obj.getBairro());
             stmt.setString(12, obj.getCidade());
             stmt.setString(13, obj.getUf());
-            
+
             //Executar o comando sql
             stmt.execute();
             stmt.close();
-            
+
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-            
+
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro" + erro);
         }
     }
-    
+
     //Método Alterar Cliente
-    public void alterarCliente(){
-        
+    public void alterarCliente() {
+
     }
-    
+
     //Método Excluir Cliente
-    public void excluirCliente(){
-        
+    public void excluirCliente() {
+
     }
-    
-   // Método Listar Cliente
-    public List<Clientes> listarClientes(){
+
+    // Método Listar Cliente
+    public List<Clientes> listarClientes() {
         try {
-            
+
             //Criando a Lista
             List<Clientes> lista = new ArrayList<>();
-            
+
             //Criando comando sql
             String sql = "select * from tb_clientes";
             PreparedStatement stmt = con.prepareStatement(sql);
-            
+
             ResultSet rs = stmt.executeQuery();
-            
-            while(rs.next()){
-            Clientes obj = new Clientes();
-            
-            obj.setId(rs.getInt("id"));
-            obj.setNome(rs.getString("nome"));
-            obj.setRg(rs.getString("rg"));
-            obj.setCpf(rs.getString("cpf"));
-            obj.setRg(rs.getString("email"));
-            obj.setTelefone(rs.getString("telefone"));
-            obj.setCelular(rs.getString("celular"));
-            obj.setCep(rs.getString("cep"));
-            obj.setEndereco(rs.getString("endereco"));
-            obj.setNumero(rs.getInt("numero"));
-            obj.setComplemento(rs.getString("complemento"));
-            obj.setBairro(rs.getString("bairro"));
-            obj.setCidade(rs.getString("cidade"));
-            obj.setUf(rs.getString("estado"));
-            
-            lista.add(obj);
-        }
-            
-        } catch (Exception e) {
+
+            while (rs.next()) {
+                Clientes obj = new Clientes();
+
+                obj.setId(rs.getInt("id"));
+                obj.setNome(rs.getString("nome"));
+                obj.setRg(rs.getString("rg"));
+                obj.setCpf(rs.getString("cpf"));
+                obj.setRg(rs.getString("email"));
+                obj.setTelefone(rs.getString("telefone"));
+                obj.setCelular(rs.getString("celular"));
+                obj.setCep(rs.getString("cep"));
+                obj.setEndereco(rs.getString("endereco"));
+                obj.setNumero(rs.getInt("numero"));
+                obj.setComplemento(rs.getString("complemento"));
+                obj.setBairro(rs.getString("bairro"));
+                obj.setCidade(rs.getString("cidade"));
+                obj.setUf(rs.getString("estado"));
+
+                lista.add(obj);
+            }
+
+            return lista;
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro);
+            return null;
         }
 
     }
