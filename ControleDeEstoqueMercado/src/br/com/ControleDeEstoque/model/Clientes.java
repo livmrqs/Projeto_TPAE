@@ -18,6 +18,7 @@ public class Clientes {
     private String email;
     private String telefone;
     private String celular;
+    private String cep;
     private String endereco;
     private int numero;
     private String complemento;
@@ -81,6 +82,14 @@ public class Clientes {
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+    
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {    
+        this.cep = cep;
     }
 
     public String getEndereco() {
