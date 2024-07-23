@@ -26,7 +26,7 @@ public class Clientes {
     private String uf;
     
     //Getters e Setters
-
+    
     public int getId() {
         return id;
     }
