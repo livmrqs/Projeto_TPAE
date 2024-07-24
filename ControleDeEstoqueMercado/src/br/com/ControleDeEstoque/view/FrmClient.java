@@ -21,7 +21,25 @@ public class FrmClient extends javax.swing.JFrame {
         ClientDAO dao = new ClientDAO();
         List<Clientes> lista = dao.listarClientes();
         DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
+        dados.setNumRows(0);
         
+        for(Clientes c: lista){
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getRg(),
+                c.getCpf(),
+                c.getEmail(),
+                c.getTelefone(),
+                c.getCelular(),
+                c.getCep(),
+                c.getEndereco(),
+                c.getNumero(),
+                c.getComplemento(),
+                c.getBairro(),
+                c.getCidade(),
+                c.getUf()                
+            });
     }
     
     /**
