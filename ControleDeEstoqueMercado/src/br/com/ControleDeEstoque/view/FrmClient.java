@@ -6,6 +6,8 @@ package br.com.ControleDeEstoque.view;
 
 import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.dao.ClientDAO;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,6 +17,10 @@ public class FrmClient extends javax.swing.JFrame {
 
     // Método Listar na tabela 
     public void listarTabela(){
+        
+        ClientDAO dao = new ClientDAO();
+        List<Clientes> lista = dao.listarClientes();
+        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         
     }
     
@@ -71,7 +77,7 @@ public class FrmClient extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaClientes = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         btnsalvar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -348,7 +354,7 @@ public class FrmClient extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Pesquisar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -359,7 +365,7 @@ public class FrmClient extends javax.swing.JFrame {
                 "Código", "Nome", "RG", "CPF", "E-mail", "Telefone", "Celular", "CEP", "Endereço", "Nº", "Comp", "Bairro", "Cidade", "UF"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaClientes);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -537,7 +543,6 @@ public class FrmClient extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JFormattedTextField jbairro;
     private javax.swing.JFormattedTextField jcelular;
@@ -552,6 +557,7 @@ public class FrmClient extends javax.swing.JFrame {
     private javax.swing.JTextField jnumero;
     private javax.swing.JFormattedTextField jrg;
     private javax.swing.JFormattedTextField jtelefone;
+    private javax.swing.JTable tabelaClientes;
     private javax.swing.JLabel txtbairro;
     private javax.swing.JLabel txtcelular;
     private javax.swing.JLabel txtcep;
