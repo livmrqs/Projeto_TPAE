@@ -13,6 +13,11 @@ import br.com.ControleDeEstoque.dao.ClientDAO;
  */
 public class FrmClient extends javax.swing.JFrame {
 
+    // Método Listar na tabela 
+    public void listarTabela(){
+        
+    }
+    
     /**
      * Creates new form FrmClient
      */
@@ -73,6 +78,11 @@ public class FrmClient extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -473,6 +483,10 @@ public class FrmClient extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // Carrega a lista
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
