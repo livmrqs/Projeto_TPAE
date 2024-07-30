@@ -27,7 +27,7 @@ public class EmployeesDAO {
     //Método cadastrar funcionario
     public void cadastrarFuncionario(Employees obj) {
         String sql = """
-                     INSERT INTO tb_funcionarios(nome, rg, cpf, email, senha, cargo, nivel_acesso telefone, celular, cep, endereco, numero, complemento, bairro, cidade, estado)
+                     INSERT INTO tb_funcionarios(nome, rg, cpf, email, senha, cargo, nivel_acesso, telefone, celular, cep, endereco, numero, complemento, bairro, cidade, estado)
                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, obj.getNome());
