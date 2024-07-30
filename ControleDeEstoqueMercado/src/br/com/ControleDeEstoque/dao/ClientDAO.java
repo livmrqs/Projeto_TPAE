@@ -165,7 +165,7 @@ public class ClientDAO {
             obj.setEndereco(webServiceCep.getLogradouroFull());
             obj.setCidade(webServiceCep.getCidade());
             obj.setBairro(webServiceCep.getBairro());
-            obj.setUf(webServiceCep.getUf());
+            obj.setCep(webServiceCep.getCep());
             
             return obj;
         } else {
