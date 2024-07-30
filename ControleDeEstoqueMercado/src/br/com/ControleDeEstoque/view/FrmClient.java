@@ -17,13 +17,13 @@ import javax.swing.table.DefaultTableModel;
 public class FrmClient extends javax.swing.JFrame {
 
     // Método Listar na tabela 
-    public void listarTabela(){
+    public void listarTabela() {
         ClientDAO dao = new ClientDAO();
         List<Clientes> lista = dao.listarClientes();
         DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         dados.setNumRows(0);
-        
-        for(Clientes c : lista){
+
+        for (Clientes c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
@@ -38,11 +38,11 @@ public class FrmClient extends javax.swing.JFrame {
                 c.getComplemento(),
                 c.getBairro(),
                 c.getCidade(),
-                c.getUf()                
+                c.getUf()
             });
         }
     }  // Fim do método listarTabela
-    
+
     /**
      * Creates new form FrmClient
      */
@@ -375,6 +375,11 @@ public class FrmClient extends javax.swing.JFrame {
                 txtpesquisaActionPerformed(evt);
             }
         });
+        txtpesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtpesquisaKeyPressed(evt);
+            }
+        });
 
         btnpesquisar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnpesquisar.setText("Pesquisar");
@@ -503,60 +508,60 @@ public class FrmClient extends javax.swing.JFrame {
 
     private void btnsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvarActionPerformed
 
-            Clientes obj = new Clientes();
-            obj.setNome(jnome.getText());
-            obj.setRg(jrg.getText());
-            obj.setCpf(jcpf.getText());
-            obj.setEmail(jemail.getText());
-            obj.setCelular(jcelular.getText());
-            obj.setCep(jcep.getText());
-            obj.setTelefone(jtelefone.getText());
-            obj.setEndereco(jendereco.getText());
-            obj.setNumero(Integer.parseInt(jnumero.getText()));
-            obj.setComplemento(jcomplemento.getText());
-            obj.setBairro(jbairro.getText());
-            obj.setCidade(jcidade.getText());
-            obj.setUf(cbuf.getSelectedItem().toString());
-            
-            ClientDAO dao = new ClientDAO();
-            dao.cadastrarCliente(obj);
+        Clientes obj = new Clientes();
+        obj.setNome(jnome.getText());
+        obj.setRg(jrg.getText());
+        obj.setCpf(jcpf.getText());
+        obj.setEmail(jemail.getText());
+        obj.setCelular(jcelular.getText());
+        obj.setCep(jcep.getText());
+        obj.setTelefone(jtelefone.getText());
+        obj.setEndereco(jendereco.getText());
+        obj.setNumero(Integer.parseInt(jnumero.getText()));
+        obj.setComplemento(jcomplemento.getText());
+        obj.setBairro(jbairro.getText());
+        obj.setCidade(jcidade.getText());
+        obj.setUf(cbuf.getSelectedItem().toString());
+
+        ClientDAO dao = new ClientDAO();
+        dao.cadastrarCliente(obj);
     }//GEN-LAST:event_btnsalvarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Botão editar
-        
-            Clientes obj = new Clientes();
-            obj.setNome(jnome.getText());
-            obj.setRg(jrg.getText());
-            obj.setCpf(jcpf.getText());
-            obj.setEmail(jemail.getText());
-            obj.setCelular(jcelular.getText());
-            obj.setCep(jcep.getText());
-            obj.setTelefone(jtelefone.getText());
-            obj.setEndereco(jendereco.getText());
-            obj.setNumero(Integer.parseInt(jnumero.getText()));
-            obj.setComplemento(jcomplemento.getText());
-            obj.setBairro(jbairro.getText());
-            obj.setCidade(jcidade.getText());
-            obj.setUf(cbuf.getSelectedItem().toString());
 
-            obj.setId(Integer.parseInt(jcodigo.getText()));
-            
-            ClientDAO dao = new ClientDAO();
+        Clientes obj = new Clientes();
+        obj.setNome(jnome.getText());
+        obj.setRg(jrg.getText());
+        obj.setCpf(jcpf.getText());
+        obj.setEmail(jemail.getText());
+        obj.setCelular(jcelular.getText());
+        obj.setCep(jcep.getText());
+        obj.setTelefone(jtelefone.getText());
+        obj.setEndereco(jendereco.getText());
+        obj.setNumero(Integer.parseInt(jnumero.getText()));
+        obj.setComplemento(jcomplemento.getText());
+        obj.setBairro(jbairro.getText());
+        obj.setCidade(jcidade.getText());
+        obj.setUf(cbuf.getSelectedItem().toString());
 
-            dao.alterarCliente(obj);                
+        obj.setId(Integer.parseInt(jcodigo.getText()));
+
+        ClientDAO dao = new ClientDAO();
+
+        dao.alterarCliente(obj);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // Botão excluir
-        
-           Clientes obj = new Clientes();
 
-           obj.setId(Integer.parseInt(jcodigo.getText()));
-            
-           ClientDAO dao = new ClientDAO();
+        Clientes obj = new Clientes();
 
-           dao.excluirCliente(obj);  
+        obj.setId(Integer.parseInt(jcodigo.getText()));
+
+        ClientDAO dao = new ClientDAO();
+
+        dao.excluirCliente(obj);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -567,7 +572,7 @@ public class FrmClient extends javax.swing.JFrame {
     private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked
         // Pega os dados
         jTabbedPane1.setSelectedIndex(0);
-        
+
         jcodigo.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
         jnome.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
         jrg.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 2).toString());
@@ -586,15 +591,15 @@ public class FrmClient extends javax.swing.JFrame {
 
     private void btnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpesquisarActionPerformed
         // Botão pesquisar
-        String nome = "%"+txtpesquisa.getText()+"%";
-        
+        String nome = "%" + txtpesquisa.getText() + "%";
+
         ClientDAO dao = new ClientDAO();
         List<Clientes> lista = dao.buscarClientesPorNome(nome);
-        
+
         DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         dados.setNumRows(0);
-        
-        for(Clientes c : lista){
+
+        for (Clientes c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
@@ -609,7 +614,7 @@ public class FrmClient extends javax.swing.JFrame {
                 c.getComplemento(),
                 c.getBairro(),
                 c.getCidade(),
-                c.getUf()                
+                c.getUf()
             });
         }
     }//GEN-LAST:event_btnpesquisarActionPerformed
@@ -621,6 +626,36 @@ public class FrmClient extends javax.swing.JFrame {
     private void btnpesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnpesquisarKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnpesquisarKeyPressed
+
+    private void txtpesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpesquisaKeyPressed
+        // Pesquisa por digitação
+        String nome = "%" + txtpesquisa.getText() + "%";
+
+        ClientDAO dao = new ClientDAO();
+        List<Clientes> lista = dao.buscarClientesPorNome(nome);
+
+        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
+        dados.setNumRows(0);
+
+        for (Clientes c : lista) {
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getRg(),
+                c.getCpf(),
+                c.getEmail(),
+                c.getTelefone(),
+                c.getCelular(),
+                c.getCep(),
+                c.getEndereco(),
+                c.getNumero(),
+                c.getComplemento(),
+                c.getBairro(),
+                c.getCidade(),
+                c.getUf()
+            });
+        }
+    }//GEN-LAST:event_txtpesquisaKeyPressed
 
     /**
      * @param args the command line arguments
