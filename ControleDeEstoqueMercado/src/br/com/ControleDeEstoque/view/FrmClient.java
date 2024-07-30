@@ -6,8 +6,10 @@ package br.com.ControleDeEstoque.view;
 
 import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.dao.ClientDAO;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JFrame;
 
 /**
  *
@@ -17,13 +19,12 @@ public class FrmClient extends javax.swing.JFrame {
 
     // Método Listar na tabela 
     public void listarTabela(){
-        
         ClientDAO dao = new ClientDAO();
         List<Clientes> lista = dao.listarClientes();
         DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         dados.setNumRows(0);
         
-        for(Clientes c: lista){
+        for(Clientes c : lista){
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
@@ -40,13 +41,15 @@ public class FrmClient extends javax.swing.JFrame {
                 c.getCidade(),
                 c.getUf()                
             });
-    }
+        }
+    }  // Fim do método listarTabela
     
     /**
      * Creates new form FrmClient
      */
     public FrmClient() {
         initComponents();
+        this.getContentPane().setBackground(Color.WHITE);
     }
 
     /**
@@ -252,7 +255,7 @@ public class FrmClient extends javax.swing.JFrame {
                                     .addComponent(jnome, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(15, 15, 15)
                                         .addComponent(txtcep)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,18 +268,18 @@ public class FrmClient extends javax.swing.JFrame {
                                         .addComponent(txtnumero)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jnumero))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(txtemail)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jemail, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtcelular)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
+                                        .addComponent(jcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txttelefone)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -510,6 +513,7 @@ public class FrmClient extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // Carrega a lista
+        listarTabela();
     }//GEN-LAST:event_formWindowActivated
 
     /**

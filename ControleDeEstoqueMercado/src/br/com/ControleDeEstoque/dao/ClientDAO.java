@@ -6,7 +6,7 @@ package br.com.ControleDeEstoque.dao;
 
 import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
 import br.com.ControleDeEstoque.model.Clientes;
-import com.mysql.cj.protocol.Resultset;
+import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class ClientDAO {
 
-    private Connection con;
+    private final Connection con;
 
     public ClientDAO() {
         this.con = new ConnectionFactory().getConnection();
@@ -32,32 +32,33 @@ public class ClientDAO {
 
         try {
             //Cria o comando SQL
-            String sql = "insert into tb_clientes(nome,rg,cpf,email,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado) \n"
-                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = """
+                         insert into tb_clientes(nome,rg,cpf,email,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado) 
+                         values(?,?,?,?,?,?,?,?,?,?,?,?,?)""";
 
-            //Conectar com o banco de dados e organizar o comando sql 
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, obj.getNome());
-            stmt.setString(2, obj.getRg());
-            stmt.setString(3, obj.getCpf());
-            stmt.setString(4, obj.getEmail());
-            stmt.setString(5, obj.getTelefone());
-            stmt.setString(6, obj.getCelular());
-            stmt.setString(7, obj.getCep());
-            stmt.setString(8, obj.getEndereco());
-            stmt.setInt(9, obj.getNumero());
-            stmt.setString(10, obj.getComplemento());
-            stmt.setString(11, obj.getBairro());
-            stmt.setString(12, obj.getCidade());
-            stmt.setString(13, obj.getUf());
-
-            //Executar o comando sql
-            stmt.execute();
-            stmt.close();
+            try ( //Conectar com o banco de dados e organizar o comando sql
+                    PreparedStatement stmt = con.prepareStatement(sql)) {
+                stmt.setString(1, obj.getNome());
+                stmt.setString(2, obj.getRg());
+                stmt.setString(3, obj.getCpf());
+                stmt.setString(4, obj.getEmail());
+                stmt.setString(5, obj.getTelefone());
+                stmt.setString(6, obj.getCelular());
+                stmt.setString(7, obj.getCep());
+                stmt.setString(8, obj.getEndereco());
+                stmt.setInt(9, obj.getNumero());
+                stmt.setString(10, obj.getComplemento());
+                stmt.setString(11, obj.getBairro());
+                stmt.setString(12, obj.getCidade());
+                stmt.setString(13, obj.getUf());
+                
+                //Executar o comando sql
+                stmt.execute();
+            }
 
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
 
-        } catch (Exception erro) {
+        } catch (HeadlessException | SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro" + erro);
         }
     }
