@@ -11,5 +11,9 @@ package br.com.ControleDeEstoque.model;
 public class Funcionarios extends Clientes {
     
     //Atributos que não temos em cliente
+    private String senha;
+    private String cargo;
+    private String nivel_acesso;
+    
     
 }
