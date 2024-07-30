@@ -8,7 +8,7 @@ package br.com.ControleDeEstoque.model;
  *
  * @author livia
  */
-public class Funcionarios extends Clientes {
+public class Employees extends Clientes {
     
     //Atributos que não temos em cliente
     private String senha;

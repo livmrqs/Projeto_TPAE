@@ -27,7 +27,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
-          <Component id="jTabbedPane1" alignment="1" pref="1174" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="386" max="-2" attributes="0"/>
               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -292,8 +292,8 @@
                               <Component id="jbairro" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtbairro" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="jcidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jcidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jcomplemento" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtcomplemento" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtuf" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -303,10 +303,8 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="jcargo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtcomplemento1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jcargo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtcomplemento1" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jrg" alignment="3" min="-2" max="-2" attributes="0"/>
