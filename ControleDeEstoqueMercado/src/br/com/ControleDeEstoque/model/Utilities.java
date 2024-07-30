@@ -4,6 +4,10 @@
  */
 package br.com.ControleDeEstoque.model;
 
+import java.awt.Component;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author livia
@@ -11,5 +15,13 @@ package br.com.ControleDeEstoque.model;
 public class Utilities {
     
     // Método para limpar os campos após a edição
-    
+    public void LimpaTela(JPanel container) {
+        Component components[]= container.getComponents();
+        for(Component component : components) {
+            if(component instanceof JTextField){
+                ((JTextField)component).setText(null);
+            }
+        }
+    }
 }
+
