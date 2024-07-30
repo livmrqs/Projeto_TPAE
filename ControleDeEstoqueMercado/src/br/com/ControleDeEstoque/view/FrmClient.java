@@ -9,7 +9,6 @@ import br.com.ControleDeEstoque.dao.ClientDAO;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JFrame;
 
 /**
  *

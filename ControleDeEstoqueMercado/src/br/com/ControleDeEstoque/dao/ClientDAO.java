@@ -69,7 +69,28 @@ public class ClientDAO {
     }
 
     //Método Excluir Cliente
-    public void excluirCliente() {
+    public void excluirCliente(Clientes obj) {
+         try {
+            //Cria o comando SQL
+            String sql = "delete from tb_clientes where id = ?";
+
+            //Conectar com o banco de dados e organizar o comando sql
+            try ( 
+                    PreparedStatement stmt = con.prepareStatement(sql)) {
+                stmt.setInt(1, obj.getId());
+
+                //Executar o comando sql
+                stmt.execute();
+                stmt.close();
+
+            }
+
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+
+        } catch (HeadlessException | SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro" + erro);
+        }
+    }
 
     }
 
