@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 public class Utilities {
     
     // Método para limpar os campos após a edição
-    public void LimpaTela(JPanel container) {
+    public void limpaTela(JPanel container) {
         Component components[]= container.getComponents();
         for(Component component : components) {
             if(component instanceof JTextField){
