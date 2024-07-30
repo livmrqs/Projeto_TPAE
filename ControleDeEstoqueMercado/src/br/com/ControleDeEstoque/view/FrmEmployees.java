@@ -4,8 +4,10 @@
  */
 package br.com.ControleDeEstoque.view;
 
-import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.dao.ClientDAO;
+import br.com.ControleDeEstoque.model.Clientes;
+import br.com.ControleDeEstoque.dao.EmployeesDAO;
+import br.com.ControleDeEstoque.model.Employees;
 import br.com.ControleDeEstoque.model.Utilities;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -95,7 +97,7 @@ public class FrmEmployees extends javax.swing.JFrame {
         txtcpf = new javax.swing.JLabel();
         jcpf = new javax.swing.JFormattedTextField();
         txtrg1 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jsenha = new javax.swing.JPasswordField();
         txtcomplemento1 = new javax.swing.JLabel();
         jcargo = new javax.swing.JFormattedTextField();
         txtuf1 = new javax.swing.JLabel();
@@ -257,7 +259,7 @@ public class FrmEmployees extends javax.swing.JFrame {
         txtrg1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtrg1.setText("Senha:");
 
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jsenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         txtcomplemento1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtcomplemento1.setText("Cargo:");
@@ -316,7 +318,7 @@ public class FrmEmployees extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(painel_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jsenha, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(painel_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(txttelefone)
@@ -377,7 +379,7 @@ public class FrmEmployees extends javax.swing.JFrame {
                     .addComponent(txtnome)
                     .addComponent(jnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtrg1)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtuf1)
                     .addComponent(cbnivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -573,12 +575,16 @@ public class FrmEmployees extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvarActionPerformed
-
-        Clientes obj = new Clientes();
+        //botão salvar
+        
+        Employees obj = new Employees();
         obj.setNome(jnome.getText());
         obj.setRg(jrg.getText());
         obj.setCpf(jcpf.getText());
         obj.setEmail(jemail.getText());
+        obj.setSenha(jsenha.getText());
+        obj.setCargo(jcargo.getText());
+        obj.setNivel_acesso(cbnivel.getSelectedItem().toString());
         obj.setCelular(jcelular.getText());
         obj.setCep(jcep.getText());
         obj.setTelefone(jtelefone.getText());
@@ -589,8 +595,8 @@ public class FrmEmployees extends javax.swing.JFrame {
         obj.setCidade(jcidade.getText());
         obj.setUf(cbuf.getSelectedItem().toString());
 
-        ClientDAO dao = new ClientDAO();
-        dao.cadastrarCliente(obj);
+        EmployeesDAO dao = new EmployeesDAO();
+        dao.cadastrarFuncionario(obj);
         
         new Utilities().limpaTela(painel_dados);
     }//GEN-LAST:event_btnsalvarActionPerformed
@@ -800,7 +806,6 @@ public class FrmEmployees extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JFormattedTextField jbairro;
@@ -816,6 +821,7 @@ public class FrmEmployees extends javax.swing.JFrame {
     private javax.swing.JTextField jnome;
     private javax.swing.JTextField jnumero;
     private javax.swing.JFormattedTextField jrg;
+    private javax.swing.JPasswordField jsenha;
     private javax.swing.JFormattedTextField jtelefone;
     private javax.swing.JPanel painel_dados;
     private javax.swing.JTable tabelafuncionarios;

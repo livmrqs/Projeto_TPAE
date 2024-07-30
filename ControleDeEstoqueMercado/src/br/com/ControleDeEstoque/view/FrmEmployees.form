@@ -179,7 +179,7 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jcelular" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
-                                                  <Component id="jPasswordField1" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                                  <Component id="jsenha" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" attributes="0">
@@ -262,7 +262,7 @@
                           <Component id="txtnome" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jnome" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtrg1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPasswordField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jsenha" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtuf1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbnivel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -596,7 +596,7 @@
                 <Property name="text" type="java.lang.String" value="Senha:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+            <Component class="javax.swing.JPasswordField" name="jsenha">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="0"/>
