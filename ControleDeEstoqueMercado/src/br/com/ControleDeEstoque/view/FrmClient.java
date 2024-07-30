@@ -508,11 +508,40 @@ public class FrmClient extends javax.swing.JFrame {
     }//GEN-LAST:event_btnsalvarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        // Botão editar
+        
+            Clientes obj = new Clientes();
+            obj.setNome(jnome.getText());
+            obj.setRg(jrg.getText());
+            obj.setCpf(jcpf.getText());
+            obj.setEmail(jemail.getText());
+            obj.setCelular(jcelular.getText());
+            obj.setCep(jcep.getText());
+            obj.setTelefone(jtelefone.getText());
+            obj.setEndereco(jendereco.getText());
+            obj.setNumero(Integer.parseInt(jnumero.getText()));
+            obj.setComplemento(jcomplemento.getText());
+            obj.setBairro(jbairro.getText());
+            obj.setCidade(jcidade.getText());
+            obj.setUf(cbuf.getSelectedItem().toString());
+
+            obj.setId(Integer.parseInt(jcodigo.getText()));
+            
+            ClientDAO dao = new ClientDAO();
+
+            dao.alterarCliente(obj);                
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        // Botão excluir
+        
+           Clientes obj = new Clientes();
+
+           obj.setId(Integer.parseInt(jcodigo.getText()));
+            
+           ClientDAO dao = new ClientDAO();
+
+           dao.excluirCliente(obj);  
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
