@@ -604,11 +604,14 @@ public class FrmEmployees extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Botão editar
 
-        Clientes obj = new Clientes();
+        Employees obj = new Employees();
         obj.setNome(jnome.getText());
         obj.setRg(jrg.getText());
         obj.setCpf(jcpf.getText());
         obj.setEmail(jemail.getText());
+        obj.setSenha(jsenha.getText());
+        obj.setCargo(jcargo.getText());
+        obj.setNivel_acesso(cbnivel.getSelectedItem().toString());
         obj.setCelular(jcelular.getText());
         obj.setCep(jcep.getText());
         obj.setTelefone(jtelefone.getText());
@@ -621,9 +624,9 @@ public class FrmEmployees extends javax.swing.JFrame {
 
         obj.setId(Integer.parseInt(jcodigo.getText()));
 
-        ClientDAO dao = new ClientDAO();
+        EmployeesDAO dao = new EmployeesDAO();
 
-        dao.alterarCliente(obj);
+        dao.cadastrarFuncionario(obj);
         
         new Utilities().limpaTela(painel_dados);
     }//GEN-LAST:event_jButton4ActionPerformed
