@@ -166,6 +166,7 @@ public class ClientDAO {
             obj.setCidade(webServiceCep.getCidade());
             obj.setBairro(webServiceCep.getBairro());
             obj.setUf(webServiceCep.getUf());
+            
             return obj;
         } else {
             JOptionPane.showMessageDialog(null, "Erro numero: " + webServiceCep.getResulCode());

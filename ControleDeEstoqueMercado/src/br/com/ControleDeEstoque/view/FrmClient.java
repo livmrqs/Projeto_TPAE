@@ -8,6 +8,7 @@ import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.dao.ClientDAO;
 import br.com.ControleDeEstoque.model.Utilities;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -190,6 +191,11 @@ public class FrmClient extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jcep.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jcep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jcepKeyPressed(evt);
+            }
+        });
 
         txtendereco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtendereco.setText("Endereço:");
@@ -682,6 +688,23 @@ public class FrmClient extends javax.swing.JFrame {
     private void jcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcodigoActionPerformed
+
+    private void jcepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcepKeyPressed
+        // Fazer a pesquisa do CEP após usuário apertar o enter
+        //Programacao do keypress
+	if (evt.getKeyCode() == KeyEvent.VK_ENTER) { 
+         Clientes obj =  new Clientes();
+         ClientDAO dao = new ClientDAO();
+         obj = dao.buscaCep(txtcep.getText());
+         
+         txtendereco.setText(obj.getEndereco());
+         txtbairro.setText(obj.getBairro());
+         txtcidade.setText(obj.getCidade());
+         cbuf.setSelectedItem(obj.getUf());               
+         System.out.println(obj.getUf());
+         
+     }
+    }//GEN-LAST:event_jcepKeyPressed
 
     /**
      * @param args the command line arguments
