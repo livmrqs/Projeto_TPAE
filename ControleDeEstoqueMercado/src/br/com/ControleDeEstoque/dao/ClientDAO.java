@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.com.ControleDeEstoque.dao;
 
 import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
@@ -20,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class ClientDAO {
 
-    private final Connection con;
+    private Connection con;
 
     public ClientDAO() {
         this.con = new ConnectionFactory().getConnection();
@@ -117,6 +113,40 @@ public class ClientDAO {
                 obj.setUf(rs.getString("estado"));
 
                 lista.add(obj);
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+        }
+        return lista;
+    }
+
+    // Método Buscar Cliente por Nome
+    public List<Clientes> buscarClientesPorNome(String nome) {
+        List<Clientes> lista = new ArrayList<>();
+        String sql = "SELECT * FROM tb_clientes WHERE nome LIKE ?";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, "%" + nome + "%");
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Clientes obj = new Clientes();
+                    obj.setId(rs.getInt("id"));
+                    obj.setNome(rs.getString("nome"));
+                    obj.setRg(rs.getString("rg"));
+                    obj.setCpf(rs.getString("cpf"));
+                    obj.setEmail(rs.getString("email"));
+                    obj.setTelefone(rs.getString("telefone"));
+                    obj.setCelular(rs.getString("celular"));
+                    obj.setCep(rs.getString("cep"));
+                    obj.setEndereco(rs.getString("endereco"));
+                    obj.setNumero(rs.getInt("numero"));
+                    obj.setComplemento(rs.getString("complemento"));
+                    obj.setBairro(rs.getString("bairro"));
+                    obj.setCidade(rs.getString("cidade"));
+                    obj.setUf(rs.getString("estado"));
+
+                    lista.add(obj);
+                }
             }
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
