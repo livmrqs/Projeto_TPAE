@@ -59,6 +59,21 @@ public class EmployeesDAO {
         }
     }
     
+    //Método alterar funcionário
+    
+    //Método excluir funcionário
+    public void excluirFuncionario(Employees obj) {
+        String sql = "DELETE FROM tb_clientes WHERE id=?";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setInt(1, obj.getId());
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+        }
+    }
+    
     // Método listar todos os funcionarios
      public List<Employees> listarFuncionarios() {
         List<Employees> lista = new ArrayList<>();
