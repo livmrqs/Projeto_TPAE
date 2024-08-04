@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class FrmEmployees extends javax.swing.JFrame {
 
     // Método Listar na tabela 
-    public void listarTabela() {
+    public void listarTabelaFuncionario() {
         EmployeesDAO dao = new EmployeesDAO();
         List<Employees> lista = dao.listarFuncionarios();
         DefaultTableModel dados = (DefaultTableModel) tabelafuncionarios.getModel();
@@ -650,7 +650,7 @@ public class FrmEmployees extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // Carrega a lista
-        listarTabela();
+        listarTabelaFuncionario();
     }//GEN-LAST:event_formWindowActivated
 
     private void tabelafuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelafuncionariosMouseClicked
