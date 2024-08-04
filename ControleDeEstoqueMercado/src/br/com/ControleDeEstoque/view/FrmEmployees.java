@@ -579,7 +579,7 @@ public class FrmEmployees extends javax.swing.JFrame {
 
     private void btnsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvarActionPerformed
         //botão salvar
-        
+
         Employees obj = new Employees();
         obj.setNome(jnome.getText());
         obj.setRg(jrg.getText());
@@ -600,7 +600,7 @@ public class FrmEmployees extends javax.swing.JFrame {
 
         EmployeesDAO dao = new EmployeesDAO();
         dao.cadastrarFuncionario(obj);
-        
+
         new Utilities().limpaTela(painel_dados);
     }//GEN-LAST:event_btnsalvarActionPerformed
 
@@ -630,7 +630,7 @@ public class FrmEmployees extends javax.swing.JFrame {
         EmployeesDAO dao = new EmployeesDAO();
 
         dao.cadastrarFuncionario(obj);
-        
+
         new Utilities().limpaTela(painel_dados);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -644,7 +644,7 @@ public class FrmEmployees extends javax.swing.JFrame {
         EmployeesDAO dao = new EmployeesDAO();
 
         dao.excluirFuncionario(obj);
-        
+
         new Utilities().limpaTela(painel_dados);
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -680,19 +680,22 @@ public class FrmEmployees extends javax.swing.JFrame {
         // Botão pesquisar
         String nome = "%" + txtpesquisa.getText() + "%";
 
-        ClientDAO dao = new ClientDAO();
-        List<Clientes> lista = dao.buscarClientesPorNome(nome);
+        EmployeesDAO dao = new EmployeesDAO();
+        List<Employees> lista = dao.buscarFuncionariosPorNome(nome);
 
         DefaultTableModel dados = (DefaultTableModel) tabelafuncionarios.getModel();
         dados.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Employees c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
                 c.getRg(),
                 c.getCpf(),
                 c.getEmail(),
+                c.getSenha(),
+                c.getCargo(),
+                c.getNivel_acesso(),
                 c.getTelefone(),
                 c.getCelular(),
                 c.getCep(),
@@ -753,18 +756,19 @@ public class FrmEmployees extends javax.swing.JFrame {
     }//GEN-LAST:event_jcodigoActionPerformed
 
     private void jcepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcepKeyPressed
-  if (evt.getKeyCode() == KeyEvent.VK_ENTER) { 
-         Clientes obj =  new Clientes();
-         ClientDAO dao = new ClientDAO();
-         obj = dao.buscaCep(txtcep.getText());
-         
-         jendereco.setText(obj.getEndereco());
-         jbairro.setText(obj.getBairro());
-         jcidade.setText(obj.getCidade());
-         cbuf.setSelectedItem(obj.getUf());               
-         System.out.println(obj.getUf());
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Clientes obj = new Clientes();
+            ClientDAO dao = new ClientDAO();
+            obj = dao.buscaCep(txtcep.getText());
+
+            jendereco.setText(obj.getEndereco());
+            jbairro.setText(obj.getBairro());
+            jcidade.setText(obj.getCidade());
+            cbuf.setSelectedItem(obj.getUf());
+            System.out.println(obj.getUf());
     }//GEN-LAST:event_jcepKeyPressed
     }
+
     /**
      * @param args the command line arguments
      */
