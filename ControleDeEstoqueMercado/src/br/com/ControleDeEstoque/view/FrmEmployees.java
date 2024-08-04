@@ -662,15 +662,18 @@ public class FrmEmployees extends javax.swing.JFrame {
         jrg.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 2).toString());
         jcpf.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 3).toString());
         jemail.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 4).toString());
-        jtelefone.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 5).toString());
-        jcelular.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 6).toString());
-        jcep.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 7).toString());
-        jendereco.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 8).toString());
-        jnumero.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 9).toString());
-        jcomplemento.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 10).toString());
-        jbairro.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 11).toString());
-        jcidade.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 12).toString());
-        cbuf.setSelectedItem(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 13).toString());
+        jsenha.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 5).toString());
+        jcargo.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 6).toString());
+        cbnivel.setSelectedItem(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 7).toString());
+        jtelefone.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 8).toString());
+        jcelular.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 9).toString());
+        jcep.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 10).toString());
+        jendereco.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 11).toString());
+        jnumero.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 12).toString());
+        jcomplemento.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 13).toString());
+        jbairro.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 14).toString());
+        jcidade.setText(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 15).toString());
+        cbuf.setSelectedItem(tabelafuncionarios.getValueAt(tabelafuncionarios.getSelectedRow(), 16).toString());
     }//GEN-LAST:event_tabelafuncionariosMouseClicked
 
     private void btnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpesquisarActionPerformed
