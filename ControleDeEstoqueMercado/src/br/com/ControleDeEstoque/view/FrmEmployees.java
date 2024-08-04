@@ -22,18 +22,21 @@ public class FrmEmployees extends javax.swing.JFrame {
 
     // Método Listar na tabela 
     public void listarTabela() {
-        ClientDAO dao = new ClientDAO();
-        List<Clientes> lista = dao.listarClientes();
+        EmployeesDAO dao = new EmployeesDAO();
+        List<Employees> lista = dao.listarFuncionarios();
         DefaultTableModel dados = (DefaultTableModel) tabelafuncionarios.getModel();
         dados.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Employees c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
                 c.getRg(),
                 c.getCpf(),
                 c.getEmail(),
+                c.getSenha(),
+                c.getCargo(),
+                c.getNivel_acesso(),
                 c.getTelefone(),
                 c.getCelular(),
                 c.getCep(),
