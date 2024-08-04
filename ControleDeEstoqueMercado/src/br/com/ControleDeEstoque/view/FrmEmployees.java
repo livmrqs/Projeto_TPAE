@@ -637,13 +637,13 @@ public class FrmEmployees extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // Botão excluir
 
-        Clientes obj = new Clientes();
+        Employees obj = new Employees();
 
         obj.setId(Integer.parseInt(jcodigo.getText()));
 
-        ClientDAO dao = new ClientDAO();
+        EmployeesDAO dao = new EmployeesDAO();
 
-        dao.excluirCliente(obj);
+        dao.excluirFuncionario(obj);
         
         new Utilities().limpaTela(painel_dados);
     }//GEN-LAST:event_jButton5ActionPerformed
