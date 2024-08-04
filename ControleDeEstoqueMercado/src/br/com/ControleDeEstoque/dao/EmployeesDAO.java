@@ -135,4 +135,41 @@ public class EmployeesDAO {
         }
         return lista;
     }
+     
+     //Método buscar funcionário por nome 
+    public List<Employees> buscarFuncionariosPorNome(String nome) {
+        List<Employees> lista = new ArrayList<>();
+        String sql = "SELECT * FROM tb_funcionarios WHERE nome LIKE ?";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, "%" + nome + "%");
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Employees obj = new Employees();
+                    obj.setId(rs.getInt("id"));
+                    obj.setNome(rs.getString("nome"));
+                    obj.setRg(rs.getString("rg"));
+                    obj.setCpf(rs.getString("cpf"));
+                    obj.setEmail(rs.getString("email"));
+                    obj.setSenha(rs.getString("senha"));
+                    obj.setCargo(rs.getString("cargo"));
+                    obj.setNivel_acesso(rs.getString("nivel_acesso"));
+                    obj.setTelefone(rs.getString("telefone"));
+                    obj.setCelular(rs.getString("celular"));
+                    obj.setCep(rs.getString("cep"));
+                    obj.setEndereco(rs.getString("endereco"));
+                    obj.setNumero(rs.getInt("numero"));
+                    obj.setComplemento(rs.getString("complemento"));
+                    obj.setBairro(rs.getString("bairro"));
+                    obj.setCidade(rs.getString("cidade"));
+                    obj.setUf(rs.getString("estado"));
+
+                    lista.add(obj);
+                }
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+        }
+        return lista;
+    }
 }
