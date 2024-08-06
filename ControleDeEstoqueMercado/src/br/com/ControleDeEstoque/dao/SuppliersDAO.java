@@ -5,7 +5,6 @@
 package br.com.ControleDeEstoque.dao;
 
 import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
-import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.model.Suppliers;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

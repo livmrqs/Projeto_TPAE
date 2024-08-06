@@ -4,8 +4,8 @@
  */
 package br.com.ControleDeEstoque.view;
 
-import br.com.ControleDeEstoque.model.Clientes;
-import br.com.ControleDeEstoque.dao.ClientDAO;
+import br.com.ControleDeEstoque.dao.SuppliersDAO;
+import br.com.ControleDeEstoque.model.Suppliers;
 import br.com.ControleDeEstoque.model.Utilities;
 import java.awt.Color;
 import java.util.List;
@@ -74,7 +74,7 @@ public class FrmProducts extends javax.swing.JFrame {
         txtnumero = new javax.swing.JLabel();
         jestoque = new javax.swing.JTextField();
         txtuf = new javax.swing.JLabel();
-        cbfornecedor = new javax.swing.JComboBox<>();
+        cbfornecedor = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         txtpesquisa = new javax.swing.JTextField();
@@ -113,10 +113,10 @@ public class FrmProducts extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -146,7 +146,7 @@ public class FrmProducts extends javax.swing.JFrame {
         jpreco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         txtnumero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtnumero.setText("Qtde em estoque:");
+        txtnumero.setText("Quantidade em estoque:");
 
         jestoque.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -154,7 +154,15 @@ public class FrmProducts extends javax.swing.JFrame {
         txtuf.setText("Fornecedor:");
 
         cbfornecedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbfornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        cbfornecedor.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                cbfornecedorAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         javax.swing.GroupLayout painel_dadosLayout = new javax.swing.GroupLayout(painel_dados);
         painel_dados.setLayout(painel_dadosLayout);
@@ -519,6 +527,18 @@ public class FrmProducts extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcodigoActionPerformed
 
+    private void cbfornecedorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_cbfornecedorAncestorAdded
+        // Carregando comboboc fornecedores
+        
+        SuppliersDAO daof = new SuppliersDAO();
+        List<Suppliers> listadefornecedores = daof.listarFornecedor();
+        
+        cbfornecedor.removeAll();
+        for (Suppliers f: listadefornecedores){
+            cbfornecedor.addItem(f);
+        }
+    }//GEN-LAST:event_cbfornecedorAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -558,7 +578,7 @@ public class FrmProducts extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnpesquisar;
     private javax.swing.JButton btnsalvar;
-    private javax.swing.JComboBox<String> cbfornecedor;
+    private javax.swing.JComboBox cbfornecedor;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
