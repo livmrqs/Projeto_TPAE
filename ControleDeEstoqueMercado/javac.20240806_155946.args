@@ -1,0 +1,19 @@
+-d
+"C:\\Users\\livia\\OneDrive\\Área de Trabalho\\Projeto_TPAE\\ControleDeEstoqueMercado\\build\\classes"
+-classpath
+"C:\\Users\\livia\\OneDrive\\Área de Trabalho\\Projeto_TPAE\\ControleDeEstoqueMercado\\build\\classes;C:\\Users\\livia\\OneDrive\\Área de Trabalho\\mysql-connector-java-5.1.47.jar"
+-sourcepath
+"C:\\Users\\livia\\OneDrive\\Área de Trabalho\\Projeto_TPAE\\ControleDeEstoqueMercado\\src"
+-target
+22
+-encoding
+UTF-8
+-g
+--enable-preview
+-processorpath
+"C:\\Users\\livia\\Downloads\\mysql-connector-java-5.1.47.jar;C:\\Users\\livia\\Downloads\\mysql-connector-j-9.0.0.jar;C:\\Users\\livia\\OneDrive\\Área de Trabalho\\mysql-connector-java-5.1.47.jar;C:\\Users\\livia\\OneDrive\\Área de Trabalho\\dom4j-1.6.1.jar;C:\\Users\\livia\\OneDrive\\Área de Trabalho\\Projeto_TPAE\\ControleDeEstoqueMercado\\build\\empty"
+-s
+"C:\\Users\\livia\\OneDrive\\Área de Trabalho\\Projeto_TPAE\\ControleDeEstoqueMercado\\build\\generated-sources\\ap-source-output"
+-source
+22
+"C:\\Users\\livia\\OneDrive\\Área de Trabalho\\Projeto_TPAE\\ControleDeEstoqueMercado\\src\\br\\com\\ControleDeEstoque\\view\\FrmProducts.java"

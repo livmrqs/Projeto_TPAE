@@ -46,14 +46,12 @@ public class ProductsDAO {
         }
     }
     
-    //Método listar Produtos
-    public List<Products> listarProdutos(){
-        try {
-            
-            List<Products> lista = new ArrayList<>();
-            
-            String sql = "SELECT p.id, p.descricao, p.preco, p.qtd_estoque, f.nome FROM tb_produtos AS p" +
-                     "INNER JOIN tb_fornecedores AS f ON p.for_id = f.id";
+    // Método listar produto
+     public List<Products> listarProdutos() {
+        List<Products> lista = new ArrayList<>();
+
+        String sql = "select p.id, p.descricao, p.preco, p.qtd_estoque, f.nome from tb_produtos as p " +
+                     "inner join tb_fornecedores as f on p.for_id = f.id";
 
         try (PreparedStatement stmt = con.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
@@ -71,8 +69,33 @@ public class ProductsDAO {
                 obj.setFornecedor(f);
 
                 lista.add(obj);
-            
-            } catch (Exception e) {
+            }
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
         }
 
+        return lista;
     }
+     
+     // Método alterar produto
+     public void alterarProduto(Products obj){
+       String sql = "update tb_produtos set descricao=?, preco=?, qtd_estoque=?, for_id=? where id=?)";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, obj.getDescricao());
+            stmt.setDouble(2, obj.getPreco());
+            stmt.setInt(3, obj.getQtde_estoque());
+            stmt.setInt(4, obj.getFornecedor().getId());
+            stmt.setInt(5, obj.getId());
+
+            stmt.execute();
+            stmt.close();
+            JOptionPane.showMessageDialog(null, "Produto alterado com sucesso!");
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+        }
+    }
+     
+     //Método excluir produto
+}
