@@ -79,7 +79,7 @@ public class SuppliersDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
         }
     }
-    
+
     // Método Listar Fornecedor
     public List<Suppliers> listarFornecedor() {
         List<Suppliers> lista = new ArrayList<>();
@@ -102,6 +102,39 @@ public class SuppliersDAO {
                 obj.setUf(rs.getString("estado"));
 
                 lista.add(obj);
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+        }
+        return lista;
+    }
+
+    // Método Buscar Fornecedor por Nome
+    public List<Suppliers> buscarFornecedorPorNome(String nome) {
+        List<Suppliers> lista = new ArrayList<>();
+        String sql = "SELECT * FROM tb_fornecedores WHERE nome LIKE ?";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, "%" + nome + "%");
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Suppliers obj = new Suppliers();
+                    obj.setId(rs.getInt("id"));
+                    obj.setNome(rs.getString("nome"));
+                    obj.setCnpj(rs.getString("cnpj"));
+                    obj.setEmail(rs.getString("email"));
+                    obj.setTelefone(rs.getString("telefone"));
+                    obj.setCelular(rs.getString("celular"));
+                    obj.setCep(rs.getString("cep"));
+                    obj.setEndereco(rs.getString("endereco"));
+                    obj.setNumero(rs.getInt("numero"));
+                    obj.setComplemento(rs.getString("complemento"));
+                    obj.setBairro(rs.getString("bairro"));
+                    obj.setCidade(rs.getString("cidade"));
+                    obj.setUf(rs.getString("estado"));
+
+                    lista.add(obj);
+                }
             }
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
