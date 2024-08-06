@@ -99,7 +99,7 @@ public class ProductsDAO {
      
      //Método excluir produto
      public void excluirProduto(Products obj) {
-        String sql = "DELETE FROM tb_fornecedores WHERE id=?";
+        String sql = "DELETE FROM tb_produtos WHERE id=?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, obj.getId());
             stmt.execute();
