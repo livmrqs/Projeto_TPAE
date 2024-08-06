@@ -237,6 +237,7 @@ public class FrmProducts extends javax.swing.JFrame {
             }
         });
 
+        tabelaProdutos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tabelaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -402,7 +403,7 @@ public class FrmProducts extends javax.swing.JFrame {
 
         ProductsDAO dao = new ProductsDAO();
 
-        dao.excluir(obj);
+        dao.excluirProduto(obj);
         
         new Utilities().limpaTela(painel_dados);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -423,7 +424,7 @@ public class FrmProducts extends javax.swing.JFrame {
       
         Suppliers f = new Suppliers();
         SuppliersDAO dao = new SuppliersDAO();
-        f = dao.buscarFornecedorPorNome(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(),4).toString());
+        f = (Suppliers) dao.buscarFornecedorPorNome(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(),4).toString());
         cbfornecedor.removeAllItems();
         cbfornecedor.getModel().setSelectedItem(f);
         
