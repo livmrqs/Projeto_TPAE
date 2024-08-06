@@ -8,6 +8,6 @@ package br.com.ControleDeEstoque.model;
  *
  * @author livia
  */
-public class Suppliers {
+public class Suppliers extends Clientes {
     
 }
