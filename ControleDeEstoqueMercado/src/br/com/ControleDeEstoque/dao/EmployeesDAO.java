@@ -6,6 +6,7 @@ package br.com.ControleDeEstoque.dao;
 
 import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
 import br.com.ControleDeEstoque.model.Employees;
+import br.com.ControleDeEstoque.view.FrmLogin;
 import br.com.ControleDeEstoque.view.FrmMenu;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -189,11 +190,13 @@ public class EmployeesDAO {
                 //Usuário efetuou o login
                 JOptionPane.showMessageDialog(null, "Seja bem-vindo ao sistema!");
                 FrmMenu tela = new FrmMenu();
+                tela.usuariologado = rs.getString("nome");
                 tela.setVisible(true);
                 
             } else {
                 //Dados incorretos
                 JOptionPane.showMessageDialog(null, "Dados incorretos!");
+                new FrmLogin().setVisible(true);
             }
 
         } catch (HeadlessException | SQLException e) {
