@@ -4,12 +4,18 @@
  */
 package br.com.ControleDeEstoque.dao;
 
+import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
+import java.sql.Connection;
+
 /**
  *
  * @author livia
  */
 public class SuppliersDAO {
-    
-    
-    
+
+    private Connection con;
+
+    public SuppliersDAO() {
+        this.con = new ConnectionFactory().getConnection();
+    }
 }
