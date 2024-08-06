@@ -68,8 +68,6 @@ public class ClientDAO {
             stmt.setString(12, obj.getCidade());
             stmt.setString(13, obj.getUf());
             stmt.setInt(14, obj.getId());
-            
-            stmt.setInt(15, obj.getId());
 
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!");

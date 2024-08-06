@@ -21,17 +21,16 @@ public class FrmSuppliers extends javax.swing.JFrame {
 
     // Método Listar na tabela 
     public void listarTabela() {
-        ClientDAO dao = new ClientDAO();
-        List<Clientes> lista = dao.listarClientes();
+        SuppliersDAO dao = new SuppliersDAO();
+        List<Suppliers> lista = dao.listarFornecedor();
         DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
         dados.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Suppliers c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
-                c.getRg(),
-                c.getCpf(),
+                c.getCnpj(),
                 c.getEmail(),
                 c.getTelefone(),
                 c.getCelular(),
