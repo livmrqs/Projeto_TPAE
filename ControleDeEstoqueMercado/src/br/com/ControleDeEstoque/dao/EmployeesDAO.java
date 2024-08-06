@@ -7,6 +7,7 @@ package br.com.ControleDeEstoque.dao;
 import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
 import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.model.Employees;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -172,4 +173,27 @@ public class EmployeesDAO {
         }
         return lista;
     }
-}
+    
+    // Método efetuaLogin
+    public void efetuaLogin(String email, String senha){
+        try {
+            
+            //Primeiro passo - SQL
+            String sql ="select * from tb_funcionarios where email=? and senha=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                //Usuário efetuou o login
+                JOptionPane.showMessageDialog(null, "Seja bem-vindo ao sistema!");
+            } else {
+                //Dados incorretos
+                JOptionPane.showMessageDialog(null, "Dados incorretos!");
+            }
+            
+        } catch (HeadlessException | SQLException e) {
+        }
+    }
