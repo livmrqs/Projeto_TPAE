@@ -110,4 +110,29 @@ public class ProductsDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
         }
     }
+     
+     // Listar produto por nome
+     public List<Products> buscarProdutosPorNome(String nome) {
+        List<Products> lista = new ArrayList<>();
+        String sql = "select p.id, p.descricao, p.preco, p.qtd_estoque, f.nome from tb_produtos as p " +
+                     "inner join tb_fornecedores as f on (p.for_id = f.id) where p.descricao like?";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, nome);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Products obj = new Products();
+                    obj.setId(rs.getInt("p.id"));
+                    obj.setDescricao(rs.getString("p.descricao"));
+                    obj.setPreco(rs.getDouble("p.preco"));
+                    obj.setQtde_estoque(rs.getInt("p.qtd_estoque"));
+
+                    lista.add(obj);
+                }
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+        }
+        return lista;
+    }
 }
