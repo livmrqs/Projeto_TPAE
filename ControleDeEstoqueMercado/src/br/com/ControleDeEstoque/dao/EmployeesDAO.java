@@ -5,8 +5,8 @@
 package br.com.ControleDeEstoque.dao;
 
 import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
-import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.model.Employees;
+import br.com.ControleDeEstoque.view.FrmMenu;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,14 +21,14 @@ import javax.swing.JOptionPane;
  * @author livia
  */
 public class EmployeesDAO {
-    
+
     //Conexão com o banco de dados
-    private Connection con;
+    private final Connection con;
 
     public EmployeesDAO() {
         this.con = new ConnectionFactory().getConnection();
     }
-    
+
     //Método cadastrar funcionario
     public void cadastrarFuncionario(Employees obj) {
         String sql = """
@@ -59,7 +59,7 @@ public class EmployeesDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
         }
     }
-    
+
     //Método alterar funcionário
     public void alterarFuncionario(Employees obj) {
         String sql = "UPDATE tb_funcionarios SET nome=?, rg=?, cpf=?, email=?, senha=?, cargo=?, nivel_acesso=?, telefone=?, celular=?, cep=?, endereco=?, numero=?, complemento=?, bairro=?, cidade=?, estado=? WHERE id=?";
@@ -90,7 +90,6 @@ public class EmployeesDAO {
         }
     }
 
-    
     //Método excluir funcionário
     public void excluirFuncionario(Employees obj) {
         String sql = "DELETE FROM tb_funcionarios WHERE id=?";
@@ -103,9 +102,9 @@ public class EmployeesDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
         }
     }
-    
+
     // Método listar todos os funcionarios
-     public List<Employees> listarFuncionarios() {
+    public List<Employees> listarFuncionarios() {
         List<Employees> lista = new ArrayList<>();
         String sql = "SELECT * FROM tb_funcionarios";
         try (PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
@@ -136,8 +135,8 @@ public class EmployeesDAO {
         }
         return lista;
     }
-     
-     //Método buscar funcionário por nome 
+
+    //Método buscar funcionário por nome 
     public List<Employees> buscarFuncionariosPorNome(String nome) {
         List<Employees> lista = new ArrayList<>();
         String sql = "SELECT * FROM tb_funcionarios WHERE nome LIKE ?";
@@ -173,27 +172,31 @@ public class EmployeesDAO {
         }
         return lista;
     }
-    
+
     // Método efetuaLogin
-    public void efetuaLogin(String email, String senha){
+    public void efetuaLogin(String email, String senha) {
         try {
-            
+
             //Primeiro passo - SQL
-            String sql ="select * from tb_funcionarios where email=? and senha=?";
+            String sql = "select * from tb_funcionarios where email=? and senha=?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, email);
             stmt.setString(2, senha);
-            
+
             ResultSet rs = stmt.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 //Usuário efetuou o login
                 JOptionPane.showMessageDialog(null, "Seja bem-vindo ao sistema!");
+                FrmMenu tela = new FrmMenu();
+                tela.setVisible(true);
+                
             } else {
                 //Dados incorretos
                 JOptionPane.showMessageDialog(null, "Dados incorretos!");
             }
-            
+
         } catch (HeadlessException | SQLException e) {
         }
     }
+}

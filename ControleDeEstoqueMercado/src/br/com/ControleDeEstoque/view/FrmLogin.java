@@ -4,6 +4,9 @@
  */
 package br.com.ControleDeEstoque.view;
 
+import br.com.ControleDeEstoque.dao.EmployeesDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author livia
@@ -35,7 +38,7 @@ public class FrmLogin extends javax.swing.JFrame {
         btnsair = new javax.swing.JButton();
         btnentrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seja bem-vindo ao sistema!");
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -133,7 +136,20 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnentrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnentrarActionPerformed
-        // TODO add your handling code here:
+        // Botão entrar
+        try {
+            String email, senha;
+            email = jemail.getText();
+            senha = jsenha.getText();
+            
+            EmployeesDAO dao = new EmployeesDAO();
+            
+            dao.efetuaLogin(email, senha);
+            this.dispose();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "erro");
+        }
     }//GEN-LAST:event_btnentrarActionPerformed
 
     /**
