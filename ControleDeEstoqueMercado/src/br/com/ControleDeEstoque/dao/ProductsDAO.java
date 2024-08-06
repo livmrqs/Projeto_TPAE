@@ -5,7 +5,11 @@
 package br.com.ControleDeEstoque.dao;
 
 import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
+import br.com.ControleDeEstoque.model.Products;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,5 +21,24 @@ public class ProductsDAO {
 
     public ProductsDAO() {
         this.con = new ConnectionFactory().getConnection();
+    }
+    
+    // Método cadastrar Produto
+    public void cadastrarProduto(Products obj){
+       String sql = """
+                     INSERT INTO tb_produtos(descricao, preco, qtd_estoque, for_id)
+                     VALUES (?, ?, ?, ?)""";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, obj.getDescricao());
+            stmt.setDouble(2, obj.getPreco());
+            stmt.setInt(3, obj.getQtde_estoque());
+            stmt.setInt(4, obj.getFornecedor().getId());
+
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+        }
     }
 }
