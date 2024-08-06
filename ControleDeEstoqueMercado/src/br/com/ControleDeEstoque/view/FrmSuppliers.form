@@ -186,8 +186,8 @@
                                           <Group type="102" attributes="0">
                                               <Component id="txtrg" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jcnpj" min="-2" pref="130" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                              <Component id="jcnpj" min="-2" pref="165" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Component id="txtbairro" min="-2" max="-2" attributes="0"/>

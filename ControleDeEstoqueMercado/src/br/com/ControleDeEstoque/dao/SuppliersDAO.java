@@ -49,4 +49,17 @@ public class SuppliersDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
         }
     }
+    
+    // Método Excluir Fornecedor
+    public void excluirFornecedor(Suppliers obj) {
+        String sql = "DELETE FROM tb_fornecedores WHERE id=?";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setInt(1, obj.getId());
+            stmt.execute();
+            JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+        }
+    }
 }

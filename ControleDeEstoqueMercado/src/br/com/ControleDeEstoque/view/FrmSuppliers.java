@@ -288,8 +288,8 @@ public class FrmSuppliers extends javax.swing.JFrame {
                                     .addGroup(painel_dadosLayout.createSequentialGroup()
                                         .addComponent(txtrg)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(78, 78, 78))
+                                        .addComponent(jcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43))
                                     .addGroup(painel_dadosLayout.createSequentialGroup()
                                         .addComponent(txtbairro)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -509,7 +509,7 @@ public class FrmSuppliers extends javax.swing.JFrame {
         // botão salvar
         Suppliers obj = new Suppliers();
         obj.setNome(jnome.getText());
-        obj.setRg(jcnpj.getText());
+        obj.setCnpj(jcnpj.getText());
         obj.setEmail(jemail.getText());
         obj.setCelular(jcelular.getText());
         obj.setCep(jcep.getText());
@@ -532,8 +532,7 @@ public class FrmSuppliers extends javax.swing.JFrame {
 
         Clientes obj = new Clientes();
         obj.setNome(jnome.getText());
-        obj.setRg(jcnpj.getText());
-        obj.setCpf(jcpf.getText());
+        obj.setCnpj(jcnpj.getText());
         obj.setEmail(jemail.getText());
         obj.setCelular(jcelular.getText());
         obj.setCep(jcep.getText());
@@ -580,7 +579,6 @@ public class FrmSuppliers extends javax.swing.JFrame {
         jcodigo.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
         jnome.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
         jcnpj.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 2).toString());
-        jcpf.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 3).toString());
         jemail.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 4).toString());
         jtelefone.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 5).toString());
         jcelular.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 6).toString());
