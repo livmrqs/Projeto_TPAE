@@ -6,6 +6,8 @@ package br.com.ControleDeEstoque.view;
 
 import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.dao.ClientDAO;
+import br.com.ControleDeEstoque.dao.SuppliersDAO;
+import br.com.ControleDeEstoque.model.Suppliers;
 import br.com.ControleDeEstoque.model.Utilities;
 import java.awt.Color;
 import java.util.List;
@@ -90,7 +92,7 @@ public class FrmSuppliers extends javax.swing.JFrame {
         txtuf = new javax.swing.JLabel();
         cbuf = new javax.swing.JComboBox<>();
         txtrg = new javax.swing.JLabel();
-        jrg = new javax.swing.JFormattedTextField();
+        jcnpj = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         txtpesquisa = new javax.swing.JTextField();
@@ -231,11 +233,11 @@ public class FrmSuppliers extends javax.swing.JFrame {
         txtrg.setText("CNPJ:");
 
         try {
-            jrg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+            jcnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jrg.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jcnpj.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout painel_dadosLayout = new javax.swing.GroupLayout(painel_dados);
         painel_dados.setLayout(painel_dadosLayout);
@@ -286,7 +288,7 @@ public class FrmSuppliers extends javax.swing.JFrame {
                                     .addGroup(painel_dadosLayout.createSequentialGroup()
                                         .addComponent(txtrg)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jrg, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(78, 78, 78))
                                     .addGroup(painel_dadosLayout.createSequentialGroup()
                                         .addComponent(txtbairro)
@@ -348,7 +350,7 @@ public class FrmSuppliers extends javax.swing.JFrame {
                         .addComponent(cbuf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painel_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtrg))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
@@ -387,13 +389,13 @@ public class FrmSuppliers extends javax.swing.JFrame {
 
         tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "RG", "CPF", "E-mail", "Telefone", "Celular", "CEP", "Endereço", "Nº", "Comp", "Bairro", "Cidade", "UF"
+                "Código", "Nome", "CNPJ", "E-mail", "Telefone", "Celular", "CEP", "Endereço", "Nº", "Comp", "Bairro", "Cidade", "UF"
             }
         ));
         tabelaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -504,11 +506,10 @@ public class FrmSuppliers extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvarActionPerformed
-
-        Clientes obj = new Clientes();
+        // botão salvar
+        Suppliers obj = new Suppliers();
         obj.setNome(jnome.getText());
-        obj.setRg(jrg.getText());
-        obj.setCpf(jcpf.getText());
+        obj.setRg(jcnpj.getText());
         obj.setEmail(jemail.getText());
         obj.setCelular(jcelular.getText());
         obj.setCep(jcep.getText());
@@ -520,8 +521,8 @@ public class FrmSuppliers extends javax.swing.JFrame {
         obj.setCidade(jcidade.getText());
         obj.setUf(cbuf.getSelectedItem().toString());
 
-        ClientDAO dao = new ClientDAO();
-        dao.cadastrarCliente(obj);
+        SuppliersDAO dao = new SuppliersDAO();
+        dao.cadastrarFornecedor(obj);
         
         new Utilities().limpaTela(painel_dados);
     }//GEN-LAST:event_btnsalvarActionPerformed
@@ -531,7 +532,7 @@ public class FrmSuppliers extends javax.swing.JFrame {
 
         Clientes obj = new Clientes();
         obj.setNome(jnome.getText());
-        obj.setRg(jrg.getText());
+        obj.setRg(jcnpj.getText());
         obj.setCpf(jcpf.getText());
         obj.setEmail(jemail.getText());
         obj.setCelular(jcelular.getText());
@@ -578,7 +579,7 @@ public class FrmSuppliers extends javax.swing.JFrame {
 
         jcodigo.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
         jnome.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
-        jrg.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 2).toString());
+        jcnpj.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 2).toString());
         jcpf.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 3).toString());
         jemail.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 4).toString());
         jtelefone.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 5).toString());
@@ -725,13 +726,13 @@ public class FrmSuppliers extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jcelular;
     private javax.swing.JFormattedTextField jcep;
     private javax.swing.JFormattedTextField jcidade;
+    private javax.swing.JFormattedTextField jcnpj;
     private javax.swing.JTextField jcodigo;
     private javax.swing.JFormattedTextField jcomplemento;
     private javax.swing.JTextField jemail;
     private javax.swing.JTextField jendereco;
     private javax.swing.JTextField jnome;
     private javax.swing.JTextField jnumero;
-    private javax.swing.JFormattedTextField jrg;
     private javax.swing.JFormattedTextField jtelefone;
     private javax.swing.JPanel painel_dados;
     private javax.swing.JTable tabelaClientes;
