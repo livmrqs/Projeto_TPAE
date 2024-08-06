@@ -8,7 +8,6 @@ import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.dao.ClientDAO;
 import br.com.ControleDeEstoque.model.Utilities;
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -690,18 +689,9 @@ public class FrmClient extends javax.swing.JFrame {
     }//GEN-LAST:event_jcodigoActionPerformed
 
     private void jcepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcepKeyPressed
-  if (evt.getKeyCode() == KeyEvent.VK_ENTER) { 
-         Clientes obj =  new Clientes();
-         ClientDAO dao = new ClientDAO();
-         obj = dao.buscaCep(txtcep.getText());
-         
-         jendereco.setText(obj.getEndereco());
-         jbairro.setText(obj.getBairro());
-         jcidade.setText(obj.getCidade());
-         cbuf.setSelectedItem(obj.getUf());               
-         System.out.println(obj.getUf());
+
     }//GEN-LAST:event_jcepKeyPressed
-    }
+
     /**
      * @param args the command line arguments
      */

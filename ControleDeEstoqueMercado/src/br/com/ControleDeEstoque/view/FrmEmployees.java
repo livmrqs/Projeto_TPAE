@@ -721,19 +721,22 @@ public class FrmEmployees extends javax.swing.JFrame {
         // Pesquisa por digitação
         String nome = "%" + txtpesquisa.getText() + "%";
 
-        ClientDAO dao = new ClientDAO();
-        List<Clientes> lista = dao.buscarClientesPorNome(nome);
+        EmployeesDAO dao = new EmployeesDAO();
+        List<Employees> lista = dao.buscarFuncionariosPorNome(nome);
 
         DefaultTableModel dados = (DefaultTableModel) tabelafuncionarios.getModel();
         dados.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Employees c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
                 c.getRg(),
                 c.getCpf(),
                 c.getEmail(),
+                c.getSenha(),
+                c.getCargo(),
+                c.getNivel_acesso(),
                 c.getTelefone(),
                 c.getCelular(),
                 c.getCep(),

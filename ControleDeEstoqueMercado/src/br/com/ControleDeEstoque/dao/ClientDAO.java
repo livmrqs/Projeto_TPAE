@@ -2,7 +2,6 @@ package br.com.ControleDeEstoque.dao;
 
 import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
 import br.com.ControleDeEstoque.model.Clientes;
-import br.com.ControleDeEstoque.model.WebServiceCep;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -154,26 +153,4 @@ public class ClientDAO {
         }
         return lista;
     }
-
-    public Clientes buscaCep(String cep) {
-
-        WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
-
-        Clientes obj = new Clientes();
-
-        if (webServiceCep.wasSuccessful()) {
-            obj.setEndereco(webServiceCep.getLogradouroFull());
-            obj.setCidade(webServiceCep.getCidade());
-            obj.setBairro(webServiceCep.getBairro());
-            obj.setCep(webServiceCep.getCep());
-            
-            return obj;
-        } else {
-            JOptionPane.showMessageDialog(null, "Erro numero: " + webServiceCep.getResulCode());
-            JOptionPane.showMessageDialog(null, "Descrição do erro: " + webServiceCep.getResultText());
-            return null;
-        }
-
-    }
-
 }
