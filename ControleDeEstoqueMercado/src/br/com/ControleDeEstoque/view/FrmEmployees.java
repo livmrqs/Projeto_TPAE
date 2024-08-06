@@ -756,18 +756,8 @@ public class FrmEmployees extends javax.swing.JFrame {
     }//GEN-LAST:event_jcodigoActionPerformed
 
     private void jcepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcepKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            Clientes obj = new Clientes();
-            ClientDAO dao = new ClientDAO();
-            obj = dao.buscaCep(txtcep.getText());
-
-            jendereco.setText(obj.getEndereco());
-            jbairro.setText(obj.getBairro());
-            jcidade.setText(obj.getCidade());
-            cbuf.setSelectedItem(obj.getUf());
-            System.out.println(obj.getUf());
     }//GEN-LAST:event_jcepKeyPressed
-    }
+
 
     /**
      * @param args the command line arguments
