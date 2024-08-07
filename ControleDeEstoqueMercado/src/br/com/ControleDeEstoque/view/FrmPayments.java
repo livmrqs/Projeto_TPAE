@@ -15,6 +15,11 @@ public class FrmPayments extends javax.swing.JFrame {
      */
     public FrmPayments() {
         initComponents();
+        jcartao.setText("0");
+        jdinheiro.setText("0");
+        jcheque.setText("0");
+        jtroco.setText("0");
+        
     }
 
     /**
