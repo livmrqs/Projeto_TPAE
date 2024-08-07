@@ -438,18 +438,15 @@ public class FrmProducts extends javax.swing.JFrame {
 
         jcodigo.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 0).toString());
         jdesc.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 1).toString());
-        jrg.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 2).toString());
-        jcpf.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 3).toString());
-        jpreco.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 4).toString());
-        jtelefone.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 5).toString());
-        jcelular.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 6).toString());
-        jcep.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 7).toString());
-        jendereco.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 8).toString());
-        jnumero.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 9).toString());
-        jcomplemento.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 10).toString());
-        jbairro.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 11).toString());
-        jcidade.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 12).toString());
-        cbfornecedor.setSelectedItem(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 13).toString());
+        jpreco.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 2).toString());
+        jqtde.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 3).toString());
+        
+        Suppliers f = new Suppliers();
+        SuppliersDAO dao = new SuppliersDAO();
+        f = dao.consultaFornecedoresPorNome(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 4).toString());
+        
+        cbfornecedor.removeAllItems();
+        cbfornecedor.getModel().setSelectedItem(f);
     }//GEN-LAST:event_tabelaProdutosMouseClicked
 
     private void btnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpesquisarActionPerformed

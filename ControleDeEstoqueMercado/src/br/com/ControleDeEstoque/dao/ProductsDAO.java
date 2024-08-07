@@ -83,7 +83,7 @@ public class ProductsDAO {
     //Método listar produtos por nome
     
     //Método alterar produto
-    public void cadastrarProdutos(Products obj) {
+    public void alterarProdutos(Products obj) {
         
         try {
              String sql = "update tb_produtos set descricao=?, preco=?, qtd_estoque=?, for_id=? where id=?";
