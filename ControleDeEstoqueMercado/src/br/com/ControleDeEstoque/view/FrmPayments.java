@@ -31,15 +31,15 @@ public class FrmPayments extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtnome5 = new javax.swing.JLabel();
-        jcodigo1 = new javax.swing.JTextField();
+        jdinheiro = new javax.swing.JTextField();
         txtnome6 = new javax.swing.JLabel();
-        jcodigo2 = new javax.swing.JTextField();
+        jcartao = new javax.swing.JTextField();
         txtnome7 = new javax.swing.JLabel();
-        jcodigo3 = new javax.swing.JTextField();
+        jcheque = new javax.swing.JTextField();
         txtnome8 = new javax.swing.JLabel();
-        jcodigo4 = new javax.swing.JTextField();
+        jtroco = new javax.swing.JTextField();
         txtnome9 = new javax.swing.JLabel();
-        jcodigo5 = new javax.swing.JTextField();
+        jtotal = new javax.swing.JTextField();
         jfinalizar = new javax.swing.JButton();
 
         txtnome4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -76,30 +76,36 @@ public class FrmPayments extends javax.swing.JFrame {
         txtnome5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtnome5.setText("DINHEIRO:");
 
-        jcodigo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jdinheiro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         txtnome6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtnome6.setText("CARTÃO:");
 
-        jcodigo2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jcartao.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         txtnome7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtnome7.setText("CHEQUE:");
 
-        jcodigo3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jcheque.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         txtnome8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtnome8.setText("TROCO:");
 
-        jcodigo4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jtroco.setEditable(false);
+        jtroco.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         txtnome9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtnome9.setText("TOTAL:");
 
-        jcodigo5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jtotal.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         jfinalizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jfinalizar.setText("Finalizar Venda");
+        jfinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jfinalizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,7 +120,7 @@ public class FrmPayments extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtnome6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcodigo2)
+                                .addComponent(jcartao)
                                 .addGap(1, 1, 1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,15 +132,15 @@ public class FrmPayments extends javax.swing.JFrame {
                                     .addComponent(txtnome7, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcodigo5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jcodigo4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jcodigo3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtroco, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcheque, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jfinalizar)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(txtnome5)
                         .addGap(4, 4, 4)
-                        .addComponent(jcodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jdinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(239, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,23 +150,23 @@ public class FrmPayments extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnome5)
-                    .addComponent(jcodigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnome6)
-                    .addComponent(jcodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnome7)
-                    .addComponent(jcodigo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnome8)
-                    .addComponent(jcodigo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtroco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnome9)
-                    .addComponent(jcodigo5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(jfinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -169,6 +175,22 @@ public class FrmPayments extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jfinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfinalizarActionPerformed
+        
+        double pcartao, pcheque, pdinheiro, totalpago, totalvenda, troco;
+        pcartao = Double.parseDouble(jcartao.getText());
+        pcheque = Double.parseDouble(jcheque.getText());
+        pdinheiro = Double.parseDouble(jdinheiro.getText());
+        
+        totalvenda = Double.parseDouble(jtotal.getText());
+        
+        //Calculando o troco
+        totalpago = pcartao+pcheque+pdinheiro;
+        troco = totalpago - totalvenda;
+        
+        jtroco.setText(String.valueOf(troco));
+    }//GEN-LAST:event_jfinalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,13 +230,13 @@ public class FrmPayments extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jcartao;
+    private javax.swing.JTextField jcheque;
     private javax.swing.JTextField jcodigo;
-    private javax.swing.JTextField jcodigo1;
-    private javax.swing.JTextField jcodigo2;
-    private javax.swing.JTextField jcodigo3;
-    private javax.swing.JTextField jcodigo4;
-    private javax.swing.JTextField jcodigo5;
+    private javax.swing.JTextField jdinheiro;
     private javax.swing.JButton jfinalizar;
+    public javax.swing.JTextField jtotal;
+    private javax.swing.JTextField jtroco;
     private javax.swing.JLabel txtnome4;
     private javax.swing.JLabel txtnome5;
     private javax.swing.JLabel txtnome6;

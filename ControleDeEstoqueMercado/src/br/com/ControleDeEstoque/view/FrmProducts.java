@@ -4,8 +4,6 @@
  */
 package br.com.ControleDeEstoque.view;
 
-import br.com.ControleDeEstoque.model.Clientes;
-import br.com.ControleDeEstoque.dao.ClientDAO;
 import br.com.ControleDeEstoque.dao.ProductsDAO;
 import br.com.ControleDeEstoque.dao.SuppliersDAO;
 import br.com.ControleDeEstoque.model.Products;
@@ -374,7 +372,7 @@ public class FrmProducts extends javax.swing.JFrame {
         Products obj = new Products();
         obj.setDescricao(jdesc.getText());
         obj.setPreco(Double.parseDouble(jpreco.getText()));
-        obj.setQtd_estoque(Integer.parseInt(jpreco.getText()));
+        obj.setQtd_estoque(Integer.parseInt(jqtde.getText()));
         
         Suppliers f = new Suppliers();
         f=(Suppliers)cbfornecedor.getSelectedItem();

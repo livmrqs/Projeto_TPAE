@@ -147,4 +147,57 @@ public class ProductsDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
         }
 }
+    //Método consultar produto por nome
+    public Products consultaProdutoPorNome(String nome) {
+        try {
+            String sql = "select p.id, p.descricao, p.preco, p.qtd_estoque, f.nome from tb_produtos as p "
+                + "inner join tb_fornecedores as f on (p.for_id = f.id) where p.descricao=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nome);
+
+            ResultSet rs = stmt.executeQuery();
+            Products obj = new Products();
+            Suppliers f = new Suppliers();
+
+            if (rs.next()) {
+                obj.setId(rs.getInt("p.id"));
+                obj.setDescricao(rs.getString("p.descricao"));
+                obj.setPreco(rs.getDouble("p.preco"));
+                obj.setQtd_estoque(rs.getInt("p.qtd_estoque"));
+                
+                f.setNome(rs.getString(("f.nome")));
+                
+                obj.setFornecedor(f);
+            }
+            return obj;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+            return null;
+        }
+    }
+    
+    //Método consulta por id
+    public Products buscaPorId(int id) {
+        try {
+            String sql = "select * from tb_produtos where id=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            Products obj = new Products();
+
+            if (rs.next()) {
+                obj.setId(rs.getInt("id"));
+                obj.setDescricao(rs.getString("descricao"));
+                obj.setPreco(rs.getDouble("preco"));
+                obj.setQtd_estoque(rs.getInt("qtd_estoque"));
+            }
+            return obj;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+            return null;
+        }
+    }
 }

@@ -50,7 +50,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txtnome6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jcodigo2" max="32767" attributes="0"/>
+                              <Component id="jcartao" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -66,9 +66,9 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jcodigo5" min="-2" pref="171" max="-2" attributes="0"/>
-                                  <Component id="jcodigo4" min="-2" pref="171" max="-2" attributes="0"/>
-                                  <Component id="jcodigo3" min="-2" pref="171" max="-2" attributes="0"/>
+                                  <Component id="jtotal" min="-2" pref="171" max="-2" attributes="0"/>
+                                  <Component id="jtroco" min="-2" pref="171" max="-2" attributes="0"/>
+                                  <Component id="jcheque" min="-2" pref="171" max="-2" attributes="0"/>
                                   <Component id="jfinalizar" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -78,7 +78,7 @@
                       <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
                       <Component id="txtnome5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="jcodigo1" min="-2" pref="171" max="-2" attributes="0"/>
+                      <Component id="jdinheiro" min="-2" pref="171" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="239" max="32767" attributes="0"/>
@@ -92,27 +92,27 @@
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtnome5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcodigo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jdinheiro" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtnome6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcodigo2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcartao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtnome7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcodigo3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcheque" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtnome8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcodigo4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtroco" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtnome9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcodigo5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtotal" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="jfinalizar" min="-2" pref="49" max="-2" attributes="0"/>
@@ -171,7 +171,7 @@
         <Property name="text" type="java.lang.String" value="DINHEIRO:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jcodigo1">
+    <Component class="javax.swing.JTextField" name="jdinheiro">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -186,7 +186,7 @@
         <Property name="text" type="java.lang.String" value="CART&#xc3;O:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jcodigo2">
+    <Component class="javax.swing.JTextField" name="jcartao">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -201,7 +201,7 @@
         <Property name="text" type="java.lang.String" value="CHEQUE:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jcodigo3">
+    <Component class="javax.swing.JTextField" name="jcheque">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -216,8 +216,9 @@
         <Property name="text" type="java.lang.String" value="TROCO:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jcodigo4">
+    <Component class="javax.swing.JTextField" name="jtroco">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
@@ -231,12 +232,15 @@
         <Property name="text" type="java.lang.String" value="TOTAL:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jcodigo5">
+    <Component class="javax.swing.JTextField" name="jtotal">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jfinalizar">
       <Properties>
@@ -245,6 +249,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Finalizar Venda"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jfinalizarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
