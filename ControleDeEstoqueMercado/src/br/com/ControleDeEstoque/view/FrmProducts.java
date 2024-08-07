@@ -6,7 +6,9 @@ package br.com.ControleDeEstoque.view;
 
 import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.dao.ClientDAO;
+import br.com.ControleDeEstoque.dao.ProductsDAO;
 import br.com.ControleDeEstoque.dao.SuppliersDAO;
+import br.com.ControleDeEstoque.model.Products;
 import br.com.ControleDeEstoque.model.Suppliers;
 import br.com.ControleDeEstoque.model.Utilities;
 import java.awt.Color;
@@ -376,24 +378,18 @@ public class FrmProducts extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalvarActionPerformed
+        //botão salvar
+        Products obj = new Products();
+        obj.setDescricao(jdesc.getText());
+        obj.setPreco(Double.parseDouble(jpreco.getText()));
+        obj.setQtd_estoque(Integer.parseInt(jpreco.getText()));
+        
+        Suppliers f = new Suppliers();
+        f=(Suppliers)cbfornecedor.getSelectedItem();
+        obj.setFornecedor(f);
 
-        Clientes obj = new Clientes();
-        obj.setNome(jdesc.getText());
-        obj.setRg(jrg.getText());
-        obj.setCpf(jcpf.getText());
-        obj.setEmail(jpreco.getText());
-        obj.setCelular(jcelular.getText());
-        obj.setCep(jcep.getText());
-        obj.setTelefone(jtelefone.getText());
-        obj.setEndereco(jendereco.getText());
-        obj.setNumero(Integer.parseInt(jnumero.getText()));
-        obj.setComplemento(jcomplemento.getText());
-        obj.setBairro(jbairro.getText());
-        obj.setCidade(jcidade.getText());
-        obj.setUf(cbfornecedor.getSelectedItem().toString());
-
-        ClientDAO dao = new ClientDAO();
-        dao.cadastrarCliente(obj);
+        ProductsDAO dao = new ProductsDAO();
+        dao.cadastrarProduto(obj);
         
         new Utilities().limpaTela(painel_dados);
     }//GEN-LAST:event_btnsalvarActionPerformed
