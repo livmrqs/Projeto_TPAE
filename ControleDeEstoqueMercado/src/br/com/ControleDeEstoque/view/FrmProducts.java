@@ -389,40 +389,34 @@ public class FrmProducts extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Botão editar
 
-        Clientes obj = new Clientes();
-        obj.setNome(jdesc.getText());
-        obj.setRg(jrg.getText());
-        obj.setCpf(jcpf.getText());
-        obj.setEmail(jpreco.getText());
-        obj.setCelular(jcelular.getText());
-        obj.setCep(jcep.getText());
-        obj.setTelefone(jtelefone.getText());
-        obj.setEndereco(jendereco.getText());
-        obj.setNumero(Integer.parseInt(jnumero.getText()));
-        obj.setComplemento(jcomplemento.getText());
-        obj.setBairro(jbairro.getText());
-        obj.setCidade(jcidade.getText());
-        obj.setUf(cbfornecedor.getSelectedItem().toString());
-
+        Products obj = new Products();
         obj.setId(Integer.parseInt(jcodigo.getText()));
+        obj.setDescricao(jdesc.getText());
+        obj.setPreco(Double.parseDouble(jpreco.getText()));
+        obj.setQtd_estoque(Integer.parseInt(jqtde.getText()));
+        
+        Suppliers f = new Suppliers();
+        f = (Suppliers)cbfornecedor.getSelectedItem();
+        
+        obj.setFornecedor(f);
 
-        ClientDAO dao = new ClientDAO();
-
-        dao.alterarCliente(obj);
+        ProductsDAO dao = new ProductsDAO();
+        dao.alterarProdutos(obj);
         
         new Utilities().limpaTela(painel_dados);
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // Botão excluir
 
-        Clientes obj = new Clientes();
+        Products obj = new Products();
 
         obj.setId(Integer.parseInt(jcodigo.getText()));
 
-        ClientDAO dao = new ClientDAO();
+        ProductsDAO dao = new ProductsDAO();
 
-        dao.excluirCliente(obj);
+        dao.excluirProduto(obj);
         
         new Utilities().limpaTela(painel_dados);
     }//GEN-LAST:event_jButton5ActionPerformed
