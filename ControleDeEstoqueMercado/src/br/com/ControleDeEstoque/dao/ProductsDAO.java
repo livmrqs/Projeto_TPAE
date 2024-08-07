@@ -81,4 +81,25 @@ public class ProductsDAO {
       
 }
     //Método listar produtos por nome
+    
+    //Método alterar produto
+    public void cadastrarProdutos(Products obj) {
+        
+        try {
+             String sql = "update tb_produtos set descricao=?, preco=?, qtd_estoque=?, for_id=? where id=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, obj.getDescricao());
+            stmt.setDouble(2, obj.getPreco());
+            stmt.setInt(3, obj.getQtd_estoque());
+            stmt.setInt(4, obj.getFornecedor().getId());
+            stmt.setInt(5, obj.getId());
+
+            stmt.execute();
+            stmt.close();
+            JOptionPane.showMessageDialog(null, "Produto alterado com sucesso!");
+            
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+        }
+}
 }
