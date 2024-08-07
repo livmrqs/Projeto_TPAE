@@ -23,27 +23,19 @@ public class FrmProducts extends javax.swing.JFrame {
 
     // Método Listar na tabela 
     public void listarTabela() {
-        ClientDAO dao = new ClientDAO();
-        List<Clientes> lista = dao.listarClientes();
-        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
+        ProductsDAO dao = new ProductsDAO();
+        List<Products> lista = dao.listarProdutos();
+        DefaultTableModel dados = (DefaultTableModel) tabelaProdutos.getModel();
         dados.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Products c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
+                c.getDescricao(),
+                c.getPreco(),
+                c.getQtd_estoque(),
+                c.getFornecedor().getNome(),
+                
             });
         }
     }  // Fim do método listarTabela
@@ -84,7 +76,7 @@ public class FrmProducts extends javax.swing.JFrame {
         txtpesquisa = new javax.swing.JTextField();
         btnpesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaClientes = new javax.swing.JTable();
+        tabelaProdutos = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         btnsalvar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -259,7 +251,7 @@ public class FrmProducts extends javax.swing.JFrame {
             }
         });
 
-        tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -270,12 +262,12 @@ public class FrmProducts extends javax.swing.JFrame {
                 "Código", "Descrição", "Preço", "Qtde. em estoque", "Fornecedor"
             }
         ));
-        tabelaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelaProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaClientesMouseClicked(evt);
+                tabelaProdutosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelaClientes);
+        jScrollPane1.setViewportView(tabelaProdutos);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -440,25 +432,25 @@ public class FrmProducts extends javax.swing.JFrame {
         listarTabela();
     }//GEN-LAST:event_formWindowActivated
 
-    private void tabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClientesMouseClicked
+    private void tabelaProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaProdutosMouseClicked
         // Pega os dados
         jTabbedPane1.setSelectedIndex(0);
 
-        jcodigo.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 0).toString());
-        jdesc.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 1).toString());
-        jrg.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 2).toString());
-        jcpf.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 3).toString());
-        jpreco.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 4).toString());
-        jtelefone.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 5).toString());
-        jcelular.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 6).toString());
-        jcep.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 7).toString());
-        jendereco.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 8).toString());
-        jnumero.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 9).toString());
-        jcomplemento.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 10).toString());
-        jbairro.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 11).toString());
-        jcidade.setText(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 12).toString());
-        cbfornecedor.setSelectedItem(tabelaClientes.getValueAt(tabelaClientes.getSelectedRow(), 13).toString());
-    }//GEN-LAST:event_tabelaClientesMouseClicked
+        jcodigo.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 0).toString());
+        jdesc.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 1).toString());
+        jrg.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 2).toString());
+        jcpf.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 3).toString());
+        jpreco.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 4).toString());
+        jtelefone.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 5).toString());
+        jcelular.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 6).toString());
+        jcep.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 7).toString());
+        jendereco.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 8).toString());
+        jnumero.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 9).toString());
+        jcomplemento.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 10).toString());
+        jbairro.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 11).toString());
+        jcidade.setText(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 12).toString());
+        cbfornecedor.setSelectedItem(tabelaProdutos.getValueAt(tabelaProdutos.getSelectedRow(), 13).toString());
+    }//GEN-LAST:event_tabelaProdutosMouseClicked
 
     private void btnpesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpesquisarActionPerformed
         // Botão pesquisar
@@ -467,7 +459,7 @@ public class FrmProducts extends javax.swing.JFrame {
         ClientDAO dao = new ClientDAO();
         List<Clientes> lista = dao.buscarClientesPorNome(nome);
 
-        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) tabelaProdutos.getModel();
         dados.setNumRows(0);
 
         for (Clientes c : lista) {
@@ -505,7 +497,7 @@ public class FrmProducts extends javax.swing.JFrame {
         ClientDAO dao = new ClientDAO();
         List<Clientes> lista = dao.buscarClientesPorNome(nome);
 
-        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) tabelaProdutos.getModel();
         dados.setNumRows(0);
 
         for (Clientes c : lista) {
@@ -602,7 +594,7 @@ public class FrmProducts extends javax.swing.JFrame {
     private javax.swing.JTextField jpreco;
     private javax.swing.JTextField jqtde;
     private javax.swing.JPanel painel_dados;
-    private javax.swing.JTable tabelaClientes;
+    private javax.swing.JTable tabelaProdutos;
     private javax.swing.JLabel txtcodigo;
     private javax.swing.JLabel txtemail;
     private javax.swing.JLabel txtemail1;
