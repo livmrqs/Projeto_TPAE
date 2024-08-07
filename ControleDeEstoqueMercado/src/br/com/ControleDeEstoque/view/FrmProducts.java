@@ -447,28 +447,19 @@ public class FrmProducts extends javax.swing.JFrame {
         // Botão pesquisar
         String nome = "%" + txtpesquisa.getText() + "%";
 
-        ClientDAO dao = new ClientDAO();
-        List<Clientes> lista = dao.buscarClientesPorNome(nome);
+        ProductsDAO dao = new ProductsDAO();
+        List<Products> lista = dao.listarProdutosPorNome(nome);
 
         DefaultTableModel dados = (DefaultTableModel) tabelaProdutos.getModel();
         dados.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Products c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
+                c.getDescricao(),
+                c.getPreco(),
+                c.getQtd_estoque(),
+                c.getFornecedor().getNome(),
             });
         }
     }//GEN-LAST:event_btnpesquisarActionPerformed
@@ -482,31 +473,22 @@ public class FrmProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_btnpesquisarKeyPressed
 
     private void txtpesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpesquisaKeyPressed
-        // Pesquisa por digitação
+        // Botão pesquisar por digitação
         String nome = "%" + txtpesquisa.getText() + "%";
 
-        ClientDAO dao = new ClientDAO();
-        List<Clientes> lista = dao.buscarClientesPorNome(nome);
+        ProductsDAO dao = new ProductsDAO();
+        List<Products> lista = dao.listarProdutosPorNome(nome);
 
         DefaultTableModel dados = (DefaultTableModel) tabelaProdutos.getModel();
         dados.setNumRows(0);
 
-        for (Clientes c : lista) {
+        for (Products c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
+                c.getDescricao(),
+                c.getPreco(),
+                c.getQtd_estoque(),
+                c.getFornecedor().getNome(),
             });
         }
     }//GEN-LAST:event_txtpesquisaKeyPressed
