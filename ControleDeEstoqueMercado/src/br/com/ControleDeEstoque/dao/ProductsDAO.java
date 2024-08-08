@@ -200,4 +200,21 @@ public class ProductsDAO {
             return null;
         }
     }
+    
+    //Método atualiza estoque
+    public void atualizaEstoque(int id, int qtd_nova){
+        try {
+            String sql = "update tb_produtos set qtd_estoque=? where id=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            
+            stmt.setInt(1, qtd_nova);
+            stmt.setInt(2, id);
+            
+            stmt.execute();
+            stmt.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Produto não encontrado no estoque");
+        }
+    }
 }
