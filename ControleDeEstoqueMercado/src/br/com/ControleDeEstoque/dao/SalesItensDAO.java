@@ -51,7 +51,7 @@ public class SalesItensDAO {
             
             List<SalesItens> lista = new ArrayList<>();
         String sql = "select i.id, p.descricao, i.qtd, p.preco, i.subtotal from tb_itensvendas as i "
-                 + "inner join tb_produtos as p on(i.produto_id = p.id) where i.venda_id=?";
+                 + "inner join tb_produtos as p on(i.produto_id = p.id) where i.venda_id= ?";
         
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, venda_id);
@@ -64,7 +64,7 @@ public class SalesItensDAO {
                 
                 item.setId(rs.getInt("i.id"));
                 prod.setDescricao(rs.getString("p.descricao"));
-                item.setSubtotal(rs.getInt("i.subtotal"));
+                item.setSubtotal(rs.getDouble("i.subtotal"));
                 prod.setPreco(rs.getDouble("p.preco"));
                 item.setQtd(rs.getInt("i.qtd"));
                 

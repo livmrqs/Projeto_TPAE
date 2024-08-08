@@ -5,7 +5,9 @@
 package br.com.ControleDeEstoque.view;
 
 import br.com.ControleDeEstoque.dao.SalesDAO;
+import br.com.ControleDeEstoque.dao.SalesItensDAO;
 import br.com.ControleDeEstoque.model.Sales;
+import br.com.ControleDeEstoque.model.SalesItens;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -240,7 +242,28 @@ public class FrmRecentsSales extends javax.swing.JFrame {
         tela.jtotal.setText(tabela.getValueAt(tabela.getSelectedRow(),3).toString());
         tela.jdata.setText(tabela.getValueAt(tabela.getSelectedRow(),1).toString());
         tela.jobs.setText(tabela.getValueAt(tabela.getSelectedRow(),4).toString());
+        
+        int venda_id = Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(),0).toString());
+        
+        //Dados dos itens comprados
+        SalesItens item = new SalesItens();
+        SalesItensDAO dao_item = new SalesItensDAO();
+        List<SalesItens> listaitens = dao_item.listarItensPorId(venda_id);
+        
+        DefaultTableModel dados = (DefaultTableModel) tela.tabeladetalhe.getModel();
+        dados.setNumRows(0);
+
+        for (SalesItens c : listaitens) {
+            dados.addRow(new Object[]{
+                c.getProdutos().getDescricao(),
+                c.getQtd(),
+                c.getProdutos().getPreco(),
+                c.getSubtotal(),
+            });
+        }
+        
         tela.setVisible(true);
+
     }//GEN-LAST:event_tabelaMouseClicked
 
     /**

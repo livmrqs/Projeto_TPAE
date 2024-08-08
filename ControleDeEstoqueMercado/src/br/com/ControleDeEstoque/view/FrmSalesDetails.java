@@ -46,7 +46,7 @@ public class FrmSalesDetails extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jobs = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
+        tabeladetalhe = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Detalhe da venda");
@@ -162,15 +162,15 @@ public class FrmSalesDetails extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
+        tabeladetalhe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Produto", "Quantidade", "Valor", "Subtotal"
+                "Produto", "Quantidade", "Valor", "Subtotal"
             }
         ));
-        jScrollPane1.setViewportView(tabela);
+        jScrollPane1.setViewportView(tabeladetalhe);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,7 +259,7 @@ public class FrmSalesDetails extends javax.swing.JFrame {
     public javax.swing.JFormattedTextField jdata;
     public javax.swing.JTextArea jobs;
     public javax.swing.JFormattedTextField jtotal;
-    private javax.swing.JTable tabela;
+    public javax.swing.JTable tabeladetalhe;
     private javax.swing.JLabel txtnome1;
     private javax.swing.JLabel txtnome3;
     private javax.swing.JLabel txtnome4;
