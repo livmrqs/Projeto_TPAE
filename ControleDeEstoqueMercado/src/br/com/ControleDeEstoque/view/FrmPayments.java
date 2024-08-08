@@ -126,6 +126,7 @@ public class FrmPayments extends javax.swing.JFrame {
         txtnome10.setText("DINHEIRO:");
 
         jOBS.setColumns(20);
+        jOBS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jOBS.setRows(5);
         jScrollPane1.setViewportView(jOBS);
 
@@ -193,7 +194,7 @@ public class FrmPayments extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtnome7)
                             .addComponent(jcheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnome8)
@@ -233,6 +234,7 @@ public class FrmPayments extends javax.swing.JFrame {
         SimpleDateFormat dataEUA = new SimpleDateFormat("yyyy-MM-dd");
         String datamysql = dataEUA.format(agora);
         
+        //total da venda e obs
         objv.setData_venda(datamysql);
         
         objv.setTotal_venda(totalvenda);
@@ -242,6 +244,10 @@ public class FrmPayments extends javax.swing.JFrame {
         SalesDAO dao_v = new SalesDAO();
         dao_v.cadastrarVenda(objv);
         
+        //retorna o id da ultima venda realizada
+        objv.setId(dao_v.retornaUltimaVenda());
+        
+        System.out.println("Id da última venda: " + objv.getId());
     }//GEN-LAST:event_jfinalizarActionPerformed
 
     /**
