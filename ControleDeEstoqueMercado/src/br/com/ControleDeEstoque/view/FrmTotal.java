@@ -26,21 +26,178 @@ public class FrmTotal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtnome1 = new javax.swing.JLabel();
+        jdatainicio = new javax.swing.JFormattedTextField();
+        btnbusca = new javax.swing.JButton();
+        txtnome2 = new javax.swing.JLabel();
+        jdatainicio1 = new javax.swing.JFormattedTextField();
+        btnbusca1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtnome3 = new javax.swing.JLabel();
+        jdatainicio2 = new javax.swing.JFormattedTextField();
+
+        txtnome1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtnome1.setText("Data inicial:");
+
+        try {
+            jdatainicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jdatainicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jdatainicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jdatainicioKeyPressed(evt);
+            }
+        });
+
+        btnbusca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnbusca.setText("Pesquisar");
+        btnbusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscaActionPerformed(evt);
+            }
+        });
+        btnbusca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnbuscaKeyPressed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtnome2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtnome2.setText("Data da venda:");
+
+        try {
+            jdatainicio1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jdatainicio1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jdatainicio1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jdatainicio1KeyPressed(evt);
+            }
+        });
+
+        btnbusca1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnbusca1.setText("Consultar");
+        btnbusca1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbusca1ActionPerformed(evt);
+            }
+        });
+        btnbusca1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnbusca1KeyPressed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(204, 0, 102));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Total de vendas por data");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(157, 157, 157)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(21, 21, 21))
+        );
+
+        txtnome3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtnome3.setText("Total da venda:");
+
+        jdatainicio2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
+        jdatainicio2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jdatainicio2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jdatainicio2KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtnome3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jdatainicio2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtnome2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jdatainicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(40, 40, 40)
+                .addComponent(btnbusca1)
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnbusca1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtnome2)
+                        .addComponent(jdatainicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtnome3)
+                    .addComponent(jdatainicio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jdatainicioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdatainicioKeyPressed
+
+    }//GEN-LAST:event_jdatainicioKeyPressed
+
+    private void btnbuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscaActionPerformed
+        
+    }//GEN-LAST:event_btnbuscaActionPerformed
+
+    private void btnbuscaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnbuscaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnbuscaKeyPressed
+
+    private void jdatainicio1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdatainicio1KeyPressed
+
+    }//GEN-LAST:event_jdatainicio1KeyPressed
+
+    private void btnbusca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbusca1ActionPerformed
+       
+    }//GEN-LAST:event_btnbusca1ActionPerformed
+
+    private void btnbusca1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnbusca1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnbusca1KeyPressed
+
+    private void jdatainicio2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdatainicio2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jdatainicio2KeyPressed
 
     /**
      * @param args the command line arguments
@@ -78,5 +235,15 @@ public class FrmTotal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnbusca;
+    private javax.swing.JButton btnbusca1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JFormattedTextField jdatainicio;
+    private javax.swing.JFormattedTextField jdatainicio1;
+    private javax.swing.JFormattedTextField jdatainicio2;
+    private javax.swing.JLabel txtnome1;
+    private javax.swing.JLabel txtnome2;
+    private javax.swing.JLabel txtnome3;
     // End of variables declaration//GEN-END:variables
 }

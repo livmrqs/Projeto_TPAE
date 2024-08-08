@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -108,4 +108,25 @@ public class SalesDAO {
         }
     
 }
+    //Método que calcula total da venda por data
+    public double retornaTotalVendaPorData(LocalDate data_venda){
+        try {
+            double totalvenda = 0;
+            String sql = "select sum(total_venda) as total from tb_vendas where data_venda=?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, data_venda.toString());
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                totalvenda = rs.getDouble("total");
+            }
+            
+            return totalvenda;
+            
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
