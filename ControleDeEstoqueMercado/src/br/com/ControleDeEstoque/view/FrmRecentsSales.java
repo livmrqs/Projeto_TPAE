@@ -159,6 +159,11 @@ public class FrmRecentsSales extends javax.swing.JFrame {
                 "Código", "Data da venda", "Cliente", "Total da venda", "Obs"
             }
         ));
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabela);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,6 +231,17 @@ public class FrmRecentsSales extends javax.swing.JFrame {
     private void btnbuscaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnbuscaKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnbuscaKeyPressed
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        //Clicar em uma venda
+        FrmSalesDetails tela = new FrmSalesDetails();
+        
+        tela.jcliente.setText(tabela.getValueAt(tabela.getSelectedRow(),2).toString());
+        tela.jtotal.setText(tabela.getValueAt(tabela.getSelectedRow(),3).toString());
+        tela.jdata.setText(tabela.getValueAt(tabela.getSelectedRow(),1).toString());
+        tela.jobs.setText(tabela.getValueAt(tabela.getSelectedRow(),4).toString());
+        tela.setVisible(true);
+    }//GEN-LAST:event_tabelaMouseClicked
 
     /**
      * @param args the command line arguments
