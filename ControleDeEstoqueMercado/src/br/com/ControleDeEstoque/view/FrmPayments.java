@@ -5,10 +5,14 @@
 package br.com.ControleDeEstoque.view;
 
 import br.com.ControleDeEstoque.dao.SalesDAO;
+import br.com.ControleDeEstoque.dao.SalesItensDAO;
 import br.com.ControleDeEstoque.model.Clientes;
+import br.com.ControleDeEstoque.model.Products;
 import br.com.ControleDeEstoque.model.Sales;
+import br.com.ControleDeEstoque.model.SalesItens;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -251,6 +255,24 @@ public class FrmPayments extends javax.swing.JFrame {
         
         //System.out.println("Id da última venda: " + objv.getId());
         
+        //cadastrando os produtos na tabela itemvendas
+        for(int i=0; i<carrinho.getRowCount(); i++){
+            Products objp = new Products();
+            SalesItens item = new SalesItens();
+            item.setVenda(objv);
+            
+            objp.setId(Integer.parseInt(carrinho.getValueAt(i, 0).toString()));
+            item.setProdutos(objp);
+            item.setQtd(Integer.parseInt(carrinho.getValueAt(i, 2).toString()));
+            item.setSubtotal(Double.parseDouble(carrinho.getValueAt(i, 4).toString()));
+            
+            SalesItensDAO  daoitem = new SalesItensDAO();
+            daoitem.cadastraItem(item);
+            
+            JOptionPane.showMessageDialog(null, "Venda registrada com sucesso!");
+            
+       
+    }
         
     }//GEN-LAST:event_jfinalizarActionPerformed
 

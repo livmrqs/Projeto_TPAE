@@ -24,7 +24,7 @@ public class SalesItensDAO {
     //Método que cadastra itens
     public void cadastraItem(SalesItens obj){
         try {
-             String sql = "insert into tb_itens(venda_id, produto_id, qtd, subtotal) values (?, ?, ?, ?)";
+             String sql = "insert into tb_itensvendas(venda_id, produto_id, qtd, subtotal) values (?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, obj.getVenda().getId());
             stmt.setInt(2, obj.getProdutos().getId());
@@ -33,8 +33,7 @@ public class SalesItensDAO {
 
             stmt.execute();
             stmt.close();
-            JOptionPane.showMessageDialog(null, "Item registrado com sucesso!");
-        
+            
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro: "+ erro);
         }

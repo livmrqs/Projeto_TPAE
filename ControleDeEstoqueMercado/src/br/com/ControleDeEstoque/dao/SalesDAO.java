@@ -36,7 +36,6 @@ public class SalesDAO {
 
             stmt.execute();
             stmt.close();
-            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
         
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro: "+ erro);
