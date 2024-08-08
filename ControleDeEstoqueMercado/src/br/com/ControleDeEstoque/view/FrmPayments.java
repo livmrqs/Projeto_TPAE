@@ -276,7 +276,7 @@ public class FrmPayments extends javax.swing.JFrame {
             qtd_comprada = Integer.parseInt(carrinho.getValueAt(i, 2).toString());
             qtd_atualizada = qtd_estoque - qtd_comprada;
             
-            dao_produto.atualizaEstoque(objp.getId(), qtd_comprada);
+            dao_produto.atualizaEstoque(objp.getId(), qtd_atualizada);
             
             SalesItensDAO  daoitem = new SalesItensDAO();
             daoitem.cadastraItem(item);
