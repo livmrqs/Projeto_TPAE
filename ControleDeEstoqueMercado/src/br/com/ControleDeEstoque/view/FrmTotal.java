@@ -4,6 +4,11 @@
  */
 package br.com.ControleDeEstoque.view;
 
+import br.com.ControleDeEstoque.dao.SalesDAO;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author livia
@@ -30,12 +35,12 @@ public class FrmTotal extends javax.swing.JFrame {
         jdatainicio = new javax.swing.JFormattedTextField();
         btnbusca = new javax.swing.JButton();
         txtnome2 = new javax.swing.JLabel();
-        jdatainicio1 = new javax.swing.JFormattedTextField();
-        btnbusca1 = new javax.swing.JButton();
+        jdata = new javax.swing.JFormattedTextField();
+        btconsult = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtnome3 = new javax.swing.JLabel();
-        jdatainicio2 = new javax.swing.JFormattedTextField();
+        jtotal = new javax.swing.JFormattedTextField();
 
         txtnome1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtnome1.setText("Data inicial:");
@@ -71,27 +76,27 @@ public class FrmTotal extends javax.swing.JFrame {
         txtnome2.setText("Data da venda:");
 
         try {
-            jdatainicio1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            jdata.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jdatainicio1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jdatainicio1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jdata.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jdata.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jdatainicio1KeyPressed(evt);
+                jdataKeyPressed(evt);
             }
         });
 
-        btnbusca1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnbusca1.setText("Consultar");
-        btnbusca1.addActionListener(new java.awt.event.ActionListener() {
+        btconsult.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btconsult.setText("Consultar");
+        btconsult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbusca1ActionPerformed(evt);
+                btconsultActionPerformed(evt);
             }
         });
-        btnbusca1.addKeyListener(new java.awt.event.KeyAdapter() {
+        btconsult.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnbusca1KeyPressed(evt);
+                btconsultKeyPressed(evt);
             }
         });
 
@@ -123,11 +128,11 @@ public class FrmTotal extends javax.swing.JFrame {
         txtnome3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtnome3.setText("Total da venda:");
 
-        jdatainicio2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
-        jdatainicio2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jdatainicio2.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
+        jtotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jtotal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jdatainicio2KeyPressed(evt);
+                jtotalKeyPressed(evt);
             }
         });
 
@@ -142,13 +147,13 @@ public class FrmTotal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtnome3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jdatainicio2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtnome2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jdatainicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jdata, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
-                .addComponent(btnbusca1)
+                .addComponent(btconsult)
                 .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -157,14 +162,14 @@ public class FrmTotal extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnbusca1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btconsult, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtnome2)
-                        .addComponent(jdatainicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnome3)
-                    .addComponent(jdatainicio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
@@ -183,21 +188,35 @@ public class FrmTotal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnbuscaKeyPressed
 
-    private void jdatainicio1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdatainicio1KeyPressed
+    private void jdataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdataKeyPressed
 
-    }//GEN-LAST:event_jdatainicio1KeyPressed
+    }//GEN-LAST:event_jdataKeyPressed
 
-    private void btnbusca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbusca1ActionPerformed
-       
-    }//GEN-LAST:event_btnbusca1ActionPerformed
+    private void btconsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btconsultActionPerformed
+        //botao calcular total de venda por dia
+        try {
+            
+            //receber a data
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate data_venda = LocalDate.parse(jdata.getText(), formato);
+            
+            double total_venda;
+            SalesDAO dao = new SalesDAO();
+            total_venda = dao.retornaTotalVendaPorData(data_venda);
+            
+            jtotal.setText(String.valueOf(total_venda));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Informe a data corretamente");
+        }
+    }//GEN-LAST:event_btconsultActionPerformed
 
-    private void btnbusca1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnbusca1KeyPressed
+    private void btconsultKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btconsultKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnbusca1KeyPressed
+    }//GEN-LAST:event_btconsultKeyPressed
 
-    private void jdatainicio2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdatainicio2KeyPressed
+    private void jtotalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtotalKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jdatainicio2KeyPressed
+    }//GEN-LAST:event_jtotalKeyPressed
 
     /**
      * @param args the command line arguments
@@ -235,13 +254,13 @@ public class FrmTotal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btconsult;
     private javax.swing.JButton btnbusca;
-    private javax.swing.JButton btnbusca1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JFormattedTextField jdata;
     private javax.swing.JFormattedTextField jdatainicio;
-    private javax.swing.JFormattedTextField jdatainicio1;
-    private javax.swing.JFormattedTextField jdatainicio2;
+    private javax.swing.JFormattedTextField jtotal;
     private javax.swing.JLabel txtnome1;
     private javax.swing.JLabel txtnome2;
     private javax.swing.JLabel txtnome3;
