@@ -9,6 +9,7 @@ import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.model.Sales;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +17,7 @@ import java.util.Date;
  */
 public class FrmPayments extends javax.swing.JFrame {
     Clientes cliente = new Clientes();
+    DefaultTableModel carrinho;
 
     /**
      * Creates new form FrmPayments
@@ -247,7 +249,9 @@ public class FrmPayments extends javax.swing.JFrame {
         //retorna o id da ultima venda realizada
         objv.setId(dao_v.retornaUltimaVenda());
         
-        System.out.println("Id da última venda: " + objv.getId());
+        //System.out.println("Id da última venda: " + objv.getId());
+        
+        
     }//GEN-LAST:event_jfinalizarActionPerformed
 
     /**

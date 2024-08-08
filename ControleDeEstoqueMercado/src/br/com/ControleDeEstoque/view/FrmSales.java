@@ -492,6 +492,7 @@ public class FrmSales extends javax.swing.JFrame {
         FrmPayments telap = new FrmPayments();
         telap.jtotal.setText(String.valueOf(total));
         telap.cliente = obj;
+        telap.carrinho = carrinho;
         telap.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnpagamentoActionPerformed
