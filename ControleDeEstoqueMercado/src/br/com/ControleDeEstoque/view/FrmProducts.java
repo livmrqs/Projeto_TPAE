@@ -81,7 +81,7 @@ public class FrmProducts extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastramento de Clientes");
+        setTitle("Cadastramento de Produtos");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -172,7 +172,6 @@ public class FrmProducts extends javax.swing.JFrame {
                         .addComponent(cbfornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painel_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(painel_dadosLayout.createSequentialGroup()
-                            .addGap(17, 17, 17)
                             .addGroup(painel_dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtcodigo)
                                 .addGroup(painel_dadosLayout.createSequentialGroup()

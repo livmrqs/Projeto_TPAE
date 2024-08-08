@@ -5,12 +5,17 @@
 package br.com.ControleDeEstoque.dao;
 
 import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
+import br.com.ControleDeEstoque.model.Clientes;
+import br.com.ControleDeEstoque.model.Products;
 import br.com.ControleDeEstoque.model.Sales;
+import br.com.ControleDeEstoque.model.Suppliers;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -65,4 +70,40 @@ public class SalesDAO {
         }
   
 } 
+    //Método listarVendasPorPeríodo
+    public List<Sales> listarVendasPorPeriodo(String data_inicio, String data_fim) {
+        
+        try { 
+            
+            List<Sales> lista = new ArrayList<>();
+        String sql = "select v.id, v.datavenda, c.nome, v.total_venda, v.observacoes from tb_vendas as v "
+                + "inner join tb_clientes as c on(v.cliente_id = c.id) where v.data_venda BETWEEN ? AND ?";
+        
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, data_inicio);
+            stmt.setString(2, data_fim);
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                Sales obj = new Sales();
+                Clientes c = new Clientes();
+                
+                obj.setId(rs.getInt("v.id"));
+                obj.setData_venda(rs.getString("v.datavenda"));
+                c.setNome(rs.getString("c.nome"));
+                obj.setTotal_venda(rs.getDouble("v.totalvenda"));
+                obj.setObs(rs.getString("v.observacoes"));
+                
+                obj.setCliente(c);
+
+                lista.add(obj);
+            }
+                return lista;
+            
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+            return null;
+        }
+    
+}
 }
