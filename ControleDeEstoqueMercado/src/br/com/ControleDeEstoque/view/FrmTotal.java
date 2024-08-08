@@ -71,6 +71,7 @@ public class FrmTotal extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Total das vendas");
 
         txtnome2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtnome2.setText("Data da venda:");

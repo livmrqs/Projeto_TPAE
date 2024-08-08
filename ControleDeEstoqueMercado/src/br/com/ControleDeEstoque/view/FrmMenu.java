@@ -62,6 +62,7 @@ public class FrmMenu extends javax.swing.JFrame {
         });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setToolTipText("Menu");
 
         lbluser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbluser.setForeground(new java.awt.Color(0, 255, 102));
