@@ -217,4 +217,26 @@ public class ProductsDAO {
             JOptionPane.showMessageDialog(null, "Produto não encontrado no estoque");
         }
     }
+    
+    //Método que retorna o estado atual
+    public int retornaEstoqueAtual(int id){
+        try {
+            int qtd_estoque = 0;
+            String sql = "select qtd_estoque from tb_produtos where id=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Products p = new Products();
+                
+                qtd_estoque = (rs.getInt("qtd_estoque"));
+            }
+            return qtd_estoque;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
 }
