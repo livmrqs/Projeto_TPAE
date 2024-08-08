@@ -4,6 +4,13 @@
  */
 package br.com.ControleDeEstoque.view;
 
+import br.com.ControleDeEstoque.dao.SalesDAO;
+import br.com.ControleDeEstoque.model.Sales;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author livia
@@ -30,12 +37,12 @@ public class FrmRecentsSales extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtnome1 = new javax.swing.JLabel();
-        jcpf = new javax.swing.JFormattedTextField();
+        jdatainicio = new javax.swing.JFormattedTextField();
         txtnome2 = new javax.swing.JLabel();
-        jcpf2 = new javax.swing.JFormattedTextField();
-        btnbuscacliente = new javax.swing.JButton();
+        jdatafim = new javax.swing.JFormattedTextField();
+        btnbusca = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Histórico de vendas");
@@ -71,14 +78,14 @@ public class FrmRecentsSales extends javax.swing.JFrame {
         txtnome1.setText("Data inicial:");
 
         try {
-            jcpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            jdatainicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jcpf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jcpf.addKeyListener(new java.awt.event.KeyAdapter() {
+        jdatainicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jdatainicio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jcpfKeyPressed(evt);
+                jdatainicioKeyPressed(evt);
             }
         });
 
@@ -86,27 +93,27 @@ public class FrmRecentsSales extends javax.swing.JFrame {
         txtnome2.setText("Data final:");
 
         try {
-            jcpf2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            jdatafim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jcpf2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jcpf2.addKeyListener(new java.awt.event.KeyAdapter() {
+        jdatafim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jdatafim.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jcpf2KeyPressed(evt);
+                jdatafimKeyPressed(evt);
             }
         });
 
-        btnbuscacliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnbuscacliente.setText("Pesquisar");
-        btnbuscacliente.addActionListener(new java.awt.event.ActionListener() {
+        btnbusca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnbusca.setText("Pesquisar");
+        btnbusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbuscaclienteActionPerformed(evt);
+                btnbuscaActionPerformed(evt);
             }
         });
-        btnbuscacliente.addKeyListener(new java.awt.event.KeyAdapter() {
+        btnbusca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnbuscaclienteKeyPressed(evt);
+                btnbuscaKeyPressed(evt);
             }
         });
 
@@ -115,19 +122,19 @@ public class FrmRecentsSales extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+                .addContainerGap(131, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(txtnome1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcpf, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
+                        .addComponent(jdatainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtnome2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcpf2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jdatafim, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(150, 150, 150))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnbuscacliente, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnbusca, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(176, 176, 176))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -136,15 +143,15 @@ public class FrmRecentsSales extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnome1)
-                    .addComponent(jcpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcpf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdatainicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdatafim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtnome2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(btnbuscacliente)
-                .addGap(22, 22, 22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btnbusca)
+                .addGap(20, 20, 20))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -152,7 +159,7 @@ public class FrmRecentsSales extends javax.swing.JFrame {
                 "Código", "Data da venda", "Cliente", "Total da venda", "Obs"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabela);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,22 +188,44 @@ public class FrmRecentsSales extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jcpfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcpfKeyPressed
+    private void jdatainicioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdatainicioKeyPressed
         
-    }//GEN-LAST:event_jcpfKeyPressed
+    }//GEN-LAST:event_jdatainicioKeyPressed
 
-    private void jcpf2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcpf2KeyPressed
+    private void jdatafimKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdatafimKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcpf2KeyPressed
+    }//GEN-LAST:event_jdatafimKeyPressed
 
-    private void btnbuscaclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscaclienteActionPerformed
+    private void btnbuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscaActionPerformed
+        //botão buscar venda por período
+        
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
+        LocalDate data_inicio = LocalDate.parse(jdatainicio.getText(),formato);
+        LocalDate data_final = LocalDate.parse(jdatafim.getText(),formato);
+        
+        SalesDAO dao = new SalesDAO();
+        List<Sales> lista = dao.listarVendasPorPeriodo(data_inicio, data_final);
+        
+        DefaultTableModel dados = (DefaultTableModel)tabela.getModel();
+        dados.setNumRows(0);
+        
+        for(Sales v : lista){
+            dados.addRow(new Object[]{
+                v.getId(),
+                v.getData_venda(),
+                v.getCliente().getNome(),
+                v.getTotal_venda(),
+                v.getObs()
+            });
+        }
+        
 
+    }//GEN-LAST:event_btnbuscaActionPerformed
 
-    }//GEN-LAST:event_btnbuscaclienteActionPerformed
-
-    private void btnbuscaclienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnbuscaclienteKeyPressed
+    private void btnbuscaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnbuscaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnbuscaclienteKeyPressed
+    }//GEN-LAST:event_btnbuscaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -235,14 +264,14 @@ public class FrmRecentsSales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnbuscacliente;
+    private javax.swing.JButton btnbusca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JFormattedTextField jcpf;
-    private javax.swing.JFormattedTextField jcpf2;
+    private javax.swing.JFormattedTextField jdatafim;
+    private javax.swing.JFormattedTextField jdatainicio;
+    private javax.swing.JTable tabela;
     private javax.swing.JLabel txtnome1;
     private javax.swing.JLabel txtnome2;
     // End of variables declaration//GEN-END:variables
