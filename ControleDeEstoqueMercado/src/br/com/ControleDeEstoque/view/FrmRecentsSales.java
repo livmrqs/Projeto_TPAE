@@ -46,7 +46,7 @@ public class FrmRecentsSales extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Histórico de vendas");
 
         jPanel1.setBackground(new java.awt.Color(204, 0, 102));

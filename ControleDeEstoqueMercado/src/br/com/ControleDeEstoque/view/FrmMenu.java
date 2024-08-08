@@ -4,6 +4,9 @@
  */
 package br.com.ControleDeEstoque.view;
 
+import static java.time.InstantSource.system;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author livia
@@ -120,6 +123,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem2.setText("Controle de Funcionários");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -130,6 +138,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem3.setText("Controle de Fornecedores");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuBar1.add(jMenu3);
@@ -139,7 +152,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jMenuItem4.setText("Controle de Produtos");
+        jMenuItem4.setText("Consulta de Produtos");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -150,6 +163,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem5.setText("Controle de Estoque");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem5);
 
         jMenuBar1.add(jMenu6);
@@ -160,16 +178,31 @@ public class FrmMenu extends javax.swing.JFrame {
         menu_pdv.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menu_pdv.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menu_pdv.setText("Abrir PDV");
+        menu_pdv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_pdvActionPerformed(evt);
+            }
+        });
         menu_posicao.add(menu_pdv);
 
         menu_posicaododia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menu_posicaododia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menu_posicaododia.setText("Posição do dia");
+        menu_posicaododia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_posicaododiaActionPerformed(evt);
+            }
+        });
         menu_posicao.add(menu_posicaododia);
 
         menu_controle.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menu_controle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         menu_controle.setText("Controle de Vendas");
+        menu_controle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_controleActionPerformed(evt);
+            }
+        });
         menu_posicao.add(menu_controle);
 
         jMenuBar1.add(menu_posicao);
@@ -180,12 +213,22 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
         jMenuItem9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jMenuItem9.setText("Trocar de usuário");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem9);
 
         jMenuBar1.add(jMenu8);
 
         jMenu4.setText("Sair");
         jMenu4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -206,16 +249,77 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        // abrir controle de clientes
+        FrmClient tela = new FrmClient();
+        tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+        // consulta produtos
+        FrmProducts tela = new FrmProducts();
+        tela.jTabbedPane1.setSelectedIndex(1);
+        tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         lbluser.setText(usuariologado);
     }//GEN-LAST:event_formWindowActivated
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        //logout
+        FrmLogin telalogin = new FrmLogin();
+        this.dispose();
+        
+        telalogin.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        // sair
+        int op;
+        op = JOptionPane.showConfirmDialog(null, "Você deseja realmente sair?");
+        
+        if(op==0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jMenu4MouseClicked
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // abrir estoque
+        // abrir controle de clientes
+        FrmClient tela = new FrmClient();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+         // abrir controle de funcionarios
+        FrmEmployees tela = new FrmEmployees();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // fornecedores
+        FrmSuppliers tela = new FrmSuppliers();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void menu_pdvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_pdvActionPerformed
+        // abrir pdv
+        FrmSales tela = new FrmSales();
+        tela.setVisible(true);
+    }//GEN-LAST:event_menu_pdvActionPerformed
+
+    private void menu_posicaododiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_posicaododiaActionPerformed
+        // total venda
+        FrmTotal tela = new FrmTotal();
+        tela.setVisible(true);
+    }//GEN-LAST:event_menu_posicaododiaActionPerformed
+
+    private void menu_controleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_controleActionPerformed
+        // historico
+        FrmRecentsSales tela = new FrmRecentsSales();
+        tela.setVisible(true);
+        
+    }//GEN-LAST:event_menu_controleActionPerformed
 
     /**
      * @param args the command line arguments

@@ -79,6 +79,11 @@ public class FrmLogin extends javax.swing.JFrame {
 
         btnsair.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnsair.setText("SAIR");
+        btnsair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsairActionPerformed(evt);
+            }
+        });
 
         btnentrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnentrar.setText("ENTRAR");
@@ -151,6 +156,16 @@ public class FrmLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "erro");
         }
     }//GEN-LAST:event_btnentrarActionPerformed
+
+    private void btnsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsairActionPerformed
+        // sair
+         int op;
+        op = JOptionPane.showConfirmDialog(null, "Você deseja realmente sair?");
+        
+        if(op==0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnsairActionPerformed
 
     /**
      * @param args the command line arguments

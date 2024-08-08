@@ -206,9 +206,7 @@ public class EmployeesDAO {
                 //desabilitar os menus que não tem acesso
                 tela.menu_posicaododia.setEnabled(false);
                 tela.menu_controle.setVisible(false);
-                tela.setVisible(true);
-                    
-                    
+                tela.setVisible(true); 
                 }
                 
             } else {
