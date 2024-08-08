@@ -8,6 +8,7 @@ import br.com.ControleDeEstoque.jdbc.ConnectionFactory;
 import br.com.ControleDeEstoque.model.Clientes;
 import br.com.ControleDeEstoque.model.Products;
 import br.com.ControleDeEstoque.model.Sales;
+import br.com.ControleDeEstoque.model.SalesItens;
 import br.com.ControleDeEstoque.model.Suppliers;
 import java.awt.HeadlessException;
 import java.sql.Connection;
@@ -98,6 +99,43 @@ public class SalesDAO {
                 obj.setCliente(c);
 
                 lista.add(obj);
+            }
+                return lista;
+            
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
+            return null;
+        }
+    
+}
+    //metodo que lista itens de uma venda por id
+    public List<SalesItens> listarItensPorId(int venda_id) {
+        
+        try { 
+            
+            List<SalesItens> lista = new ArrayList<>();
+        String sql = "select i.id, p.descricao, i.qtd, p.preco, i.subtotal from tb_itensvendas as i "
+                 + "inner join tb_produtos as p on(i.produto_id = p.id) where i.venda_id=?";
+        
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, venda_id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                SalesItens item = new SalesItens();
+                Products prod = new Products();
+                
+                item.setId(rs.getInt("i.id"));
+                prod.setDescricao(rs.getString("p.descricao"));
+                item.setSubtotal(rs.getInt("i.subtotal"));
+                prod.setPreco(rs.getDouble("p.preco"));
+                item.setQtd(rs.getInt("i.qtd"));
+                
+                item.setProdutos(prod);
+                
+                lista.add(item);
+                
             }
                 return lista;
             
