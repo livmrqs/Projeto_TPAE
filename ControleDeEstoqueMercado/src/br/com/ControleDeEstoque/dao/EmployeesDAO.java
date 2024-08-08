@@ -188,10 +188,28 @@ public class EmployeesDAO {
 
             if (rs.next()) {
                 //Usuário efetuou o login
+                
+                //caso o usuário seja do tipo admin
+                if(rs.getString("nivel_acesso").equals("Administrador")){
                 JOptionPane.showMessageDialog(null, "Seja bem-vindo ao sistema!");
                 FrmMenu tela = new FrmMenu();
                 tela.usuariologado = rs.getString("nome");
                 tela.setVisible(true);
+                }
+                
+                //caso seja tipo limitado 
+                else if(rs.getString("nivel_acesso").equals("Usuário")){
+                JOptionPane.showMessageDialog(null, "Seja bem-vindo ao sistema!");
+                FrmMenu tela = new FrmMenu();
+                tela.usuariologado = rs.getString("nome");
+                
+                //desabilitar os menus que não tem acesso
+                tela.menu_posicaododia.setEnabled(false);
+                tela.menu_controle.setVisible(false);
+                tela.setVisible(true);
+                    
+                    
+                }
                 
             } else {
                 //Dados incorretos
