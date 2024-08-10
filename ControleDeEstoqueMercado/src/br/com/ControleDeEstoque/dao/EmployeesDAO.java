@@ -1,6 +1,25 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * The MIT License
+ *
+ * Copyright 2024 Lívia Marques.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 package br.com.ControleDeEstoque.dao;
 
@@ -18,19 +37,27 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author livia
+ * Classe de acesso a dados (DAO) responsável por realizar operações de CRUD e outras operações relacionadas
+ * à tabela de funcionários no banco de dados.
+ * @author Lívia
  */
 public class EmployeesDAO {
 
     //Conexão com o banco de dados
     private final Connection con;
 
+    /**
+     * Construtor da classe EmployeesDAO. Inicializa a conexão com o banco de dados.
+     */
     public EmployeesDAO() {
         this.con = new ConnectionFactory().getConnection();
     }
 
-    //Método cadastrar funcionario
+    /**
+     * Cadastra um novo funcionário no banco de dados.
+     *
+     * @param obj O objeto {@link Employees} contendo os dados do funcionário a ser cadastrado.
+     */
     public void cadastrarFuncionario(Employees obj) {
         String sql = """
                      INSERT INTO tb_funcionarios(nome, rg, cpf, email, senha, cargo, nivel_acesso, telefone, celular, cep, endereco, numero, complemento, bairro, cidade, estado)
@@ -61,7 +88,11 @@ public class EmployeesDAO {
         }
     }
 
-    //Método alterar funcionário
+    /**
+     * Altera os dados de um funcionário existente no banco de dados.
+     *
+     * @param obj O objeto {@link Employees} contendo os dados atualizados do funcionário.
+     */
     public void alterarFuncionario(Employees obj) {
         String sql = "UPDATE tb_funcionarios SET nome=?, rg=?, cpf=?, email=?, senha=?, cargo=?, nivel_acesso=?, telefone=?, celular=?, cep=?, endereco=?, numero=?, complemento=?, bairro=?, cidade=?, estado=? WHERE id=?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -91,7 +122,11 @@ public class EmployeesDAO {
         }
     }
 
-    //Método excluir funcionário
+    /**
+     * Exclui um funcionário do banco de dados.
+     *
+     * @param obj O objeto {@link Employees} representando o funcionário a ser excluído.
+     */
     public void excluirFuncionario(Employees obj) {
         String sql = "DELETE FROM tb_funcionarios WHERE id=?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -104,7 +139,11 @@ public class EmployeesDAO {
         }
     }
 
-    // Método listar todos os funcionarios
+    /**
+     * Lista todos os funcionários cadastrados no banco de dados.
+     *
+     * @return Uma lista de objetos {@link Employees} representando todos os funcionários.
+     */
     public List<Employees> listarFuncionarios() {
         List<Employees> lista = new ArrayList<>();
         String sql = "SELECT * FROM tb_funcionarios";
@@ -137,7 +176,12 @@ public class EmployeesDAO {
         return lista;
     }
 
-    //Método buscar funcionário por nome 
+    /**
+     * Busca funcionários pelo nome no banco de dados.
+     *
+     * @param nome O nome do funcionário a ser buscado.
+     * @return Uma lista de objetos {@link Employees} representando os funcionários encontrados.
+     */
     public List<Employees> buscarFuncionariosPorNome(String nome) {
         List<Employees> lista = new ArrayList<>();
         String sql = "SELECT * FROM tb_funcionarios WHERE nome LIKE ?";
@@ -174,7 +218,12 @@ public class EmployeesDAO {
         return lista;
     }
 
-    // Método efetuaLogin
+    /**
+     * Efetua o login de um funcionário no sistema, verificando as credenciais de email e senha.
+     *
+     * @param email O email do funcionário.
+     * @param senha A senha do funcionário.
+     */
     public void efetuaLogin(String email, String senha) {
         try {
 
@@ -189,7 +238,7 @@ public class EmployeesDAO {
             if (rs.next()) {
                 //Usuário efetuou o login
                 
-                //caso o usuário seja do tipo admin
+                //Caso o usuário seja do tipo admin
                 if(rs.getString("nivel_acesso").equals("Administrador")){
                 JOptionPane.showMessageDialog(null, "Seja bem-vindo ao sistema!");
                 FrmMenu tela = new FrmMenu();
@@ -197,13 +246,13 @@ public class EmployeesDAO {
                 tela.setVisible(true);
                 }
                 
-                //caso seja tipo limitado 
+                //Caso seja tipo limitado 
                 else if(rs.getString("nivel_acesso").equals("Usuário")){
                 JOptionPane.showMessageDialog(null, "Seja bem-vindo ao sistema!");
                 FrmMenu tela = new FrmMenu();
                 tela.usuariologado = rs.getString("nome");
                 
-                //desabilitar os menus que não tem acesso
+                //Desabilitar os menus que não tem acesso
                 tela.menu_posicaododia.setEnabled(false);
                 tela.menu_controle.setVisible(false);
                 tela.setVisible(true); 

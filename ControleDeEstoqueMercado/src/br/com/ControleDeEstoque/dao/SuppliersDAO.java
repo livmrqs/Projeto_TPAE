@@ -1,6 +1,25 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * The MIT License
+ *
+ * Copyright 2024 Lívia Marques.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 package br.com.ControleDeEstoque.dao;
 
@@ -15,18 +34,27 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Classe de acesso a dados (DAO) responsável por realizar operações de CRUD e outras operações
+ * relacionadas aos fornecedores no banco de dados.
+ * 
  * @author livia
  */
 public class SuppliersDAO {
     
     private Connection con;
 
+    /**
+     * Construtor da classe SuppliersDAO. Inicializa a conexão com o banco de dados.
+     */
     public SuppliersDAO() {
         this.con = new ConnectionFactory().getConnection();
     }
     
-    // Método cadastrar fornecedor
+    /**
+     * Cadastra um novo fornecedor no banco de dados.
+     * 
+     * @param obj O objeto {@link Suppliers} contendo os dados do fornecedor a ser cadastrado.
+     */
     public void cadastrarFornecedores(Suppliers obj) {
         String sql = """
                      INSERT INTO tb_fornecedores(nome, cnpj, email, telefone, celular, cep, endereco, numero, complemento, bairro, cidade, estado)
@@ -52,7 +80,11 @@ public class SuppliersDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
         }
 }
-    // Método excluir fornecedor
+    /**
+     * Exclui um fornecedor do banco de dados.
+     * 
+     * @param obj O objeto {@link Suppliers} contendo o ID do fornecedor a ser excluído.
+     */
     public void excluirFornecedor(Suppliers obj) {
         String sql = "DELETE FROM tb_fornecedores WHERE id=?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -65,7 +97,11 @@ public class SuppliersDAO {
         }
     }
     
-    // Método alterar fornecedor
+    /**
+     * Atualiza os dados de um fornecedor no banco de dados.
+     * 
+     * @param obj O objeto {@link Suppliers} contendo os dados atualizados do fornecedor.
+     */
     public void alterarFornecedor(Suppliers obj) {
         String sql = "UPDATE tb_fornecedores SET nome=?, cnpj=?, email=?, telefone=?, celular=?, cep=?, endereco=?, numero=?, complemento=?, bairro=?, cidade=?, estado=? WHERE id=?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -91,7 +127,11 @@ public class SuppliersDAO {
         }
     }
     
-    // Método listar fornecedores
+    /**
+     * Lista todos os fornecedores cadastrados no banco de dados.
+     * 
+     * @return Uma lista de objetos {@link Suppliers} representando todos os fornecedores.
+     */
     public List<Suppliers> listarFornecedores() {
         List<Suppliers> lista = new ArrayList<>();
         String sql = "SELECT * FROM tb_fornecedores";
@@ -119,7 +159,12 @@ public class SuppliersDAO {
         }
         return lista;
 }
-    // Listar fornecedores por nome
+    /**
+     * Lista fornecedores cujo nome contém a string fornecida.
+     * 
+     * @param nome O nome ou parte do nome dos fornecedores a serem listados.
+     * @return Uma lista de objetos {@link Suppliers} representando os fornecedores cujo nome corresponde ao critério de busca.
+     */
 public List<Suppliers> listarFornecedoresPorNome(String nome) {
     List<Suppliers> lista = new ArrayList<>();
     String sql = "SELECT * FROM tb_fornecedores WHERE nome LIKE ?";
@@ -151,7 +196,12 @@ public List<Suppliers> listarFornecedoresPorNome(String nome) {
     }
     return lista;
 }
-    //Consulta fornecedores por nome
+    /**
+     * Consulta um fornecedor pelo nome.
+     * 
+     * @param nome O nome do fornecedor a ser consultado.
+     * @return O objeto {@link Suppliers} correspondente ao fornecedor com o nome fornecido, ou null se não encontrado.
+     */
     public Suppliers consultaFornecedoresPorNome(String nome){
         try {
     String sql = "SELECT * FROM tb_fornecedores WHERE nome=?";

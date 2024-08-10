@@ -1,6 +1,25 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * The MIT License
+ *
+ * Copyright 2024 Lívia Marques.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 package br.com.ControleDeEstoque.dao;
 
@@ -16,18 +35,28 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Classe de acesso a dados (DAO) responsável por realizar operações de CRUD e outras operações
+ * relacionadas à tabela de produtos no banco de dados.
+ * 
  * @author livia
  */
+
 public class ProductsDAO {
 
     private Connection con;
-
+    
+    /**
+     * Construtor da classe ProductsDAO. Inicializa a conexão com o banco de dados.
+     */
     public ProductsDAO() {
         this.con = new ConnectionFactory().getConnection();
     }
     
-    // Método cadastrar produto
+    /**
+     * Cadastra um novo produto no banco de dados.
+     * 
+     * @param obj O objeto {@link Products} contendo os dados do produto a ser cadastrado.
+     */
     public void cadastrarProduto(Products obj) {
         String sql = "INSERT INTO tb_produtos(descricao, preco, qtd_estoque, for_id) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -43,7 +72,11 @@ public class ProductsDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
         }
 }
-    //Método excluir produto
+    /**
+     * Exclui um produto do banco de dados.
+     * 
+     * @param obj O objeto {@link Products} representando o produto a ser excluído.
+     */
     public void excluirProduto(Products obj) {
         String sql = "DELETE FROM tb_produtos WHERE id=?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -56,7 +89,11 @@ public class ProductsDAO {
         }
     }
     
-    //Método listar produtos
+    /**
+     * Lista todos os produtos cadastrados no banco de dados.
+     * 
+     * @return Uma lista de objetos {@link Products} representando todos os produtos.
+     */
     public List<Products> listarProdutos() {
         
         try { 
@@ -91,7 +128,12 @@ public class ProductsDAO {
         }
       
 }
-    //Método listar produtos por nome
+    /**
+     * Lista produtos por nome.
+     * 
+     * @param nome O nome ou parte do nome do produto a ser buscado.
+     * @return Uma lista de objetos {@link Products} representando os produtos encontrados.
+     */
     public List<Products> listarProdutosPorNome(String nome) {
         
         try { 
@@ -127,7 +169,11 @@ public class ProductsDAO {
         }
       
     }
-    //Método alterar produto
+    /**
+     * Altera os dados de um produto existente no banco de dados.
+     * 
+     * @param obj O objeto {@link Products} contendo os dados atualizados do produto.
+     */
     public void alterarProdutos(Products obj) {
         
         try {
@@ -147,7 +193,12 @@ public class ProductsDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + erro.getMessage());
         }
 }
-    //Método consultar produto por nome
+    /**
+     * Consulta um produto pelo nome.
+     * 
+     * @param nome O nome do produto a ser consultado.
+     * @return O objeto {@link Products} representando o produto encontrado.
+     */
     public Products consultaProdutoPorNome(String nome) {
         try {
             String sql = "select p.id, p.descricao, p.preco, p.qtd_estoque, f.nome from tb_produtos as p "
@@ -177,7 +228,12 @@ public class ProductsDAO {
         }
     }
     
-    //Método consulta por id
+    /**
+     * Consulta um produto pelo ID.
+     * 
+     * @param id O ID do produto a ser consultado.
+     * @return O objeto {@link Products} representando o produto encontrado.
+     */
     public Products buscaPorId(int id) {
         try {
             String sql = "select * from tb_produtos where id=?";
@@ -201,7 +257,12 @@ public class ProductsDAO {
         }
     }
     
-    //Método atualiza estoque
+     /**
+     * Atualiza a quantidade em estoque de um produto.
+     * 
+     * @param id O ID do produto a ter seu estoque atualizado.
+     * @param qtd_nova A nova quantidade de estoque.
+     */
     public void atualizaEstoque(int id, int qtd_nova){
         try {
             String sql = "update tb_produtos set qtd_estoque=? where id=?";
@@ -218,7 +279,12 @@ public class ProductsDAO {
         }
     }
     
-    //Método que retorna o estado atual
+    /**
+     * Retorna a quantidade atual em estoque de um produto.
+     * 
+     * @param id O ID do produto a ser consultado.
+     * @return A quantidade atual em estoque.
+     */
     public int retornaEstoqueAtual(int id){
         try {
             int qtd_estoque = 0;
@@ -239,8 +305,12 @@ public class ProductsDAO {
         }
     }
     
-    //método adicionar estoque 
-    //Método atualiza estoque
+    /**
+     * Adiciona uma nova quantidade ao estoque existente de um produto.
+     * 
+     * @param id O ID do produto a ter seu estoque atualizado.
+     * @param qtd_nova A nova quantidade de estoque a ser adicionada.
+     */
     public void adicionarEstoque(int id, int qtd_nova){
         try {
             String sql = "update tb_produtos set qtd_estoque=? where id=?";
