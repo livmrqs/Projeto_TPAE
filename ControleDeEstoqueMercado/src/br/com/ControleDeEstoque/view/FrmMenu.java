@@ -286,8 +286,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // abrir estoque
-        // abrir controle de clientes
-        FrmClient tela = new FrmClient();
+        FrmInventory tela = new FrmInventory();
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
