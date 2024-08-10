@@ -175,6 +175,7 @@ public class FrmTotal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jdatainicioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jdatainicioKeyPressed
