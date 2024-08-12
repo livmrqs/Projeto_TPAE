@@ -220,7 +220,7 @@ public class FrmPayments extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jfinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfinalizarActionPerformed
-        
+          
         double pcartao, pcheque, pdinheiro, totalpago, totalvenda, troco;
         pcartao = Double.parseDouble(jcartao.getText());
         pcheque = Double.parseDouble(jcheque.getText());
@@ -280,12 +280,8 @@ public class FrmPayments extends javax.swing.JFrame {
             
             SalesItensDAO  daoitem = new SalesItensDAO();
             daoitem.cadastraItem(item);
-            
-            JOptionPane.showMessageDialog(null, "Venda registrada com sucesso!");
-            
-       
     }
-        
+  JOptionPane.showMessageDialog(null, "Venda registrada com sucesso!");
     }//GEN-LAST:event_jfinalizarActionPerformed
 
     /**
