@@ -16,7 +16,7 @@ Projeto final desenvolvido com o intuito de criar um sistema de controle de esto
 
 
 ## 🎯 Lógica de funcionamento
-Consulte o [vídeo de exemplo](https://netbeans.apache.org/front/main/download/nb122/nb122/) para melhor entender a lógica de funcionamento do sistema e como cada elemento foi implementado.
+Consulte o [vídeo de exemplo](https://youtu.be/sftIRrLOudY?si=DNa7W7eMbMwQYqse) para melhor entender a lógica de funcionamento do sistema e como cada elemento foi implementado.
 
 ## 📂 Estrutura de pastas
  
